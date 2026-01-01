@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout Help Page</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom styles for accordion transition */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#191022] dark:text-white overflow-x-hidden flex flex-col min-h-screen">
+<!-- Sticky Top Bar -->
+<div class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center p-4 pb-2 justify-between">
+<button aria-label="Go back" class="text-primary hover:bg-primary/10 rounded-full p-2 transition-colors flex shrink-0 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 28px;">arrow_back</span>
+</button>
+<h2 class="text-[#191022] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Checkout Help</h2>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col px-4 pb-32">
+<!-- Headline -->
+<h2 class="text-[#191022] dark:text-white tracking-tight text-[28px] font-bold leading-tight text-left pb-4 pt-6">
+            What do you need help with?
+        </h2>
+<!-- Search Bar -->
+<div class="py-2 mb-4">
+<label class="flex flex-col h-14 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full shadow-sm">
+<div class="text-primary flex bg-white dark:bg-gray-800 items-center justify-center pl-6 rounded-l-full border border-r-0 border-gray-100 dark:border-gray-700">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-[#191022] dark:text-white focus:outline-0 focus:ring-0 bg-white dark:bg-gray-800 border border-l-0 border-gray-100 dark:border-gray-700 h-full placeholder:text-gray-400 px-4 rounded-r-full text-lg font-normal leading-normal" placeholder="Type your question..." value=""/>
+</div>
+</label>
+</div>
+<!-- Body Text -->
+<p class="text-[#191022] dark:text-gray-300 text-lg font-normal leading-normal pb-4">
+            Tap a question below to see the answer.
+        </p>
+<!-- Accordions -->
+<div class="flex flex-col gap-4">
+<!-- FAQ Item 1 -->
+<details class="flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 group overflow-hidden transition-all duration-300">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 select-none bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 rounded-full p-2 text-primary shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<p class="text-[#191022] dark:text-white text-lg font-medium leading-normal">How do I pay with Online Banking?</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 bg-white dark:bg-gray-800">
+<div class="h-px w-full bg-gray-100 dark:bg-gray-700 mb-4"></div>
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-relaxed">
+                        Select your bank from the list provided on the checkout screen. You will need to log in to your bank account to approve the payment securely.
+                    </p>
+</div>
+</details>
+<!-- FAQ Item 2 -->
+<details class="flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 group overflow-hidden transition-all duration-300">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 select-none bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 rounded-full p-2 text-primary shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<p class="text-[#191022] dark:text-white text-lg font-medium leading-normal">What is the delivery fee?</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 bg-white dark:bg-gray-800">
+<div class="h-px w-full bg-gray-100 dark:bg-gray-700 mb-4"></div>
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-relaxed">
+                        Standard delivery is RM 5.00 for this order. Orders over RM 100 qualify for free shipping nationwide.
+                    </p>
+</div>
+</details>
+<!-- FAQ Item 3 -->
+<details class="flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 group overflow-hidden transition-all duration-300">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 select-none bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 rounded-full p-2 text-primary shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<p class="text-[#191022] dark:text-white text-lg font-medium leading-normal">When will my order arrive?</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 bg-white dark:bg-gray-800">
+<div class="h-px w-full bg-gray-100 dark:bg-gray-700 mb-4"></div>
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-relaxed">
+                        Usually within 2-3 working days. You will receive an SMS notification when the driver is nearby.
+                    </p>
+</div>
+</details>
+<!-- FAQ Item 4 -->
+<details class="flex flex-col rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 group overflow-hidden transition-all duration-300">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 select-none bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 rounded-full p-2 text-primary shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<p class="text-[#191022] dark:text-white text-lg font-medium leading-normal">I made a mistake. Can I change it?</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 bg-white dark:bg-gray-800">
+<div class="h-px w-full bg-gray-100 dark:bg-gray-700 mb-4"></div>
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-relaxed">
+                        Yes! Just tap the 'Back' arrow at the top of the screen to return to the checkout page and edit your details.
+                    </p>
+</div>
+</details>
+</div>
+</div>
+<!-- Fixed Bottom Actions -->
+<div class="fixed bottom-0 w-full bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 p-4 pb-8 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<div class="flex flex-col gap-3 max-w-md mx-auto">
+<!-- AI Chat Button (Primary) -->
+<button class="flex items-center justify-center w-full bg-primary hover:bg-primary/90 text-white rounded-full py-4 px-6 shadow-lg shadow-primary/30 transition-all active:scale-95 group">
+<div class="relative mr-3">
+<span class="material-symbols-outlined filled">smart_toy</span>
+<span class="absolute -top-1 -right-1 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
+</span>
+</div>
+<span class="text-lg font-bold tracking-wide">Chat with AI Assistant</span>
+</button>
+<!-- Call Support Button (Secondary) -->
+<button class="flex items-center justify-center w-full bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 rounded-full py-3 px-6 transition-all active:scale-95">
+<span class="material-symbols-outlined mr-2">support_agent</span>
+<span class="text-lg font-medium">Call Support</span>
+</button>
+</div>
+</div>
+</body></html>

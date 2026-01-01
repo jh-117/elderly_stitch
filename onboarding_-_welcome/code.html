@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#9942f0",
+              "background-light": "#F8F9FA", // Updated to requested off-white #F8F9FA
+              "background-dark": "#191022",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 600,
+            'GRAD' 0,
+            'opsz' 24;
+        }.text-body-large {
+            font-size: 1.125rem;line-height: 1.6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#141118] dark:text-white font-display overflow-x-hidden antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col justify-between p-4 pb-8">
+<div class="flex items-center justify-end w-full py-2">
+<button aria-label="Skip Onboarding" class="flex items-center justify-center px-6 h-12 rounded-full bg-white dark:bg-white/10 border-2 border-[#eaddf7] dark:border-white/20 active:bg-[#f8f5fc] dark:active:bg-white/20 transition-all active:scale-95 shadow-sm hover:shadow-md hover:border-[#d8b4fe]">
+<span class="text-[#6200ea] dark:text-[#d8b4fe] text-lg font-bold tracking-wide">Skip</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center w-full max-w-lg mx-auto -mt-10">
+<div class="relative w-full aspect-[4/3] mb-8 flex items-end justify-center">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent rounded-full blur-2xl scale-75 opacity-60"></div>
+<div class="w-64 h-64 sm:w-80 sm:h-80 bg-center bg-contain bg-no-repeat relative z-10 drop-shadow-xl" data-alt="Friendly elderly woman smiling while using a smartphone" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCASqM9b9mRL3c1eiPhrKb7cznh0ELrY0qECyvjqDRcRsUkxaDtu1t-UOGVxdZIU9m7jKWqFf-xH8wQ_7N9R3TycB71yPW8b_gzP1pC-FAQOGldA7Vg8vTklBX_dQyK_-Cjovxg41i6-Gec0rSxgM-eENUbnaFbq7ECcyGubmGweXe_rJbaB6PxOnwQF-lsquATzz_NpWeWmytOxxLzhoFMBBbTZTJTcjsajfV_EwCnFUblSN0H30uq2KETDwGfoH1ROmFeDaNNiQ'); border-radius: 20px;">
+</div>
+</div>
+<div class="text-center space-y-4 px-4">
+<h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#141118] dark:text-white leading-tight">
+                    Welcome to <br/><span class="text-primary">EasyShop</span>
+</h1>
+<p class="text-body-large text-gray-800 dark:text-gray-200 font-semibold max-w-xs mx-auto">
+                    The easiest way to shop online. Our smart helper listens to you.
+                </p>
+</div>
+</div>
+<div class="w-full flex flex-col items-center gap-8 pt-4 max-w-lg mx-auto">
+<div class="flex flex-row items-center justify-center gap-4">
+<div class="h-3 w-3 rounded-full bg-primary transition-all duration-300 scale-125"></div>
+<div class="h-3 w-3 rounded-full bg-[#e0dbe6] dark:bg-gray-700"></div>
+<div class="h-3 w-3 rounded-full bg-[#e0dbe6] dark:bg-gray-700"></div>
+</div>
+<button class="w-full bg-primary hover:bg-[#8530d9] active:bg-[#7221bf] text-white text-xl font-bold h-14 rounded-xl shadow-lg shadow-primary/25 flex items-center justify-center gap-3 transition-all transform active:scale-[0.98]">
+<span>Next</span>
+<span class="material-symbols-outlined" style="font-size: 28px;">arrow_forward</span>
+</button>
+</div>
+</div>
+
+</body></html>

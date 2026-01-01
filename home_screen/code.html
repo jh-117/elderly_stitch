@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E-commerce for Elderly - Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6D28D9", // Solid Purple (Violet 700) for critical actions
+                        "primary-foreground": "#E9D5FF", // Light Lavender (Purple 200) for icons
+                        "background-light": "#F8F9FA", // Off-white app background
+                        "background-dark": "#101922",
+                        "card-lavender": "#F3F1F6", // Soft Lavender-Grey for category cards
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        *:focus-visible {
+            outline: 3px solid #6D28D9;
+            outline-offset: 2px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white overflow-x-hidden antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-[#F8F9FA] dark:bg-[#101922] shadow-xl">
+<header class="flex items-center p-5 pb-2 justify-between bg-[#F8F9FA] dark:bg-[#101922] sticky top-0 z-10">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">Isnin, 12 Okt</span>
+<h2 class="text-[#111418] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Selamat Pagi,<br/>Ah Hock</h2>
+</div>
+<div class="flex items-center justify-end gap-3">
+<button aria-label="Increase text size" class="flex items-center justify-center rounded-full h-12 w-12 bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-[#111418] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-3xl">text_increase</span>
+</button>
+<button aria-label="Notifications" class="flex items-center justify-center rounded-full h-12 w-12 bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-[#111418] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-3xl">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<div class="px-5 py-4">
+<label class="flex flex-col h-14 w-full cursor-text">
+<div class="flex w-full flex-1 items-center rounded-xl h-full border border-gray-200 dark:border-gray-700 focus-within:border-primary bg-white dark:bg-gray-800 transition-colors pr-2 shadow-sm">
+<div class="text-[#617589] dark:text-gray-400 flex items-center justify-center pl-4 pr-2">
+<span class="material-symbols-outlined text-3xl">search</span>
+</div>
+<input class="flex w-full flex-1 resize-none bg-transparent text-[#111418] dark:text-white focus:outline-none h-full placeholder:text-[#617589] dark:placeholder:text-gray-500 px-2 text-lg font-normal" placeholder="Cari barang (Search)..."/>
+<button aria-label="AI Voice Navigation" class="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-purple-800 transition-colors active:scale-95" title="Navigasi Suara (Voice Navigation)">
+<span class="material-symbols-outlined text-2xl font-bold">mic</span>
+</button>
+</div>
+</label>
+</div>
+<section>
+<div class="flex justify-between items-center px-5 pt-2 pb-4">
+<h2 class="text-[#111418] dark:text-white text-[22px] font-bold leading-tight">Kategori (Categories)</h2>
+</div>
+<div class="grid grid-cols-2 gap-4 px-5">
+<button class="flex flex-col gap-3 p-4 bg-card-lavender dark:bg-gray-800 rounded-2xl active:scale-95 transition-transform border border-purple-100 dark:border-gray-700 shadow-sm text-left">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-white dark:bg-gray-700 flex items-center justify-center shadow-inner">
+<div class="w-full h-full bg-center bg-cover" data-alt="Basket of fresh vegetables and fruits" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVyZ3udiVaOI1_whb4vi69Mo59bhcZauNqvUuxYRFF4wMdu10oZjYGGpig6Ua5ni0AvbBWhCqveKuJ9cdrpmky62okqn-b2JJmG8rEplRZvdww2iyj3koGg0k9QCn5g5D8RUik5brhlIuhomgMumot6lBJCxQvq41muHMcxZXGnjZvX3idHdX7XvrCRxt633ytpvY3GenUCVN0klFO6wPzR5UgFFjLFLyZRUzwt_v_HHuse7Klog2sTIPZZrzHUNOwoGKmfAPVPQ");'></div>
+</div>
+<div>
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Barang Dapur</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Groceries</p>
+</div>
+</button>
+<button class="flex flex-col gap-3 p-4 bg-card-lavender dark:bg-gray-800 rounded-2xl active:scale-95 transition-transform border border-purple-100 dark:border-gray-700 shadow-sm text-left">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-white dark:bg-gray-700 flex items-center justify-center shadow-inner">
+<div class="w-full h-full bg-center bg-cover" data-alt="Medical stethoscope and heart symbol" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKBO9XcA7wfx2yYHnrDeLgySmu28cNglqoADVZm2aMb_F7Zvi5P0538J6wkXINpJIXTA14Mf7WAdlPcufvuoDYOcgtv_5jUcLmY1Ld0Y71w9-IoeP1uSPFHn8rAx62QzJgbZRQUsS9fGQ19d5SyHb4xtx98mmhpzIL9ynjliSpnolgZXG547OGxXyba3m8uKNgyIfX1MvHc4RqJ5Dqk7hu46TK4B5Sm5_jhDQpoLqv1ozLHpdRxJohe50GoNtpWNVoFNnJyAzixQ");'></div>
+</div>
+<div>
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Kesihatan</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Health</p>
+</div>
+</button>
+<button class="flex flex-col gap-3 p-4 bg-card-lavender dark:bg-gray-800 rounded-2xl active:scale-95 transition-transform border border-purple-100 dark:border-gray-700 shadow-sm text-left">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-white dark:bg-gray-700 flex items-center justify-center shadow-inner">
+<div class="w-full h-full bg-center bg-cover" data-alt="Clean home living room essentials" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnKOU9PebTI5xUomP7ogrEFQ9TnMbZMqh6B62ikJu1DB4y-FWQbGZrEXriGDZauOWgzADj9DRXlFijgfnh94YSyJ_nyqPYMStrsiWG2HuBWbUG0Op_MdOx9ql29qbiRSbkbqsHIaspjqAbvnrgm3QjMeUn8RoZ0d1XOuVDEhJawhpjXlptyLXEicegXfcAYse10LvWHT-hPHeQPITdInnYpjL5Pwa0YsOlPysvhqic3yr-_Gk3nQl6OQ4gE-OcYxKSE3XIJ8cr1g");'></div>
+</div>
+<div>
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Rumah</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Home</p>
+</div>
+</button>
+<button class="flex flex-col gap-3 p-4 bg-card-lavender dark:bg-gray-800 rounded-2xl active:scale-95 transition-transform border border-purple-100 dark:border-gray-700 shadow-sm text-left">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-white dark:bg-gray-700 flex items-center justify-center shadow-inner">
+<div class="w-full h-full bg-center bg-cover" data-alt="Various medicine bottles and pills" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAtb4Jl5e5DhSg3HmLhy95UfjNo5aK0S5cKGXDZBev45Z6UXk_sIPOKrEok3_t9D9NZgZsWVMqavnDpXz2bG3c_-1cnQQEQHhqNvOx6BR_7Em_d7qAE8kjOxllOfzdVYwJPp9wvkekZpKeviE3x-1MrIppOf6Tuvx0cNHiv3B90NgByH3B5jSRXOVM-OHxfMXK0sO3QOOKtoPaGlwNs1ObuaLTugUEhawwOeEMlHZQfsEcqQSMRR69NutxsBeCt6TVS1nSgrb3Mw");'></div>
+</div>
+<div>
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Ubat-ubatan</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Medicine</p>
+</div>
+</button>
+</div>
+</section>
+<section class="mt-6">
+<div class="flex justify-between items-center px-5 py-4">
+<h2 class="text-[#111418] dark:text-white text-[22px] font-bold leading-tight">Disyorkan (Recommended)</h2>
+</div>
+<div class="flex flex-col gap-4 px-5 pb-5">
+<div class="flex items-center p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm gap-4">
+<div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-600">
+<div class="w-full h-full bg-center bg-cover" data-alt="Bag of white rice 10kg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACweRPWRMrvqmY4mzG9BeriF0FEyNTT6o_LOccgc9FOVl6nxEQ4Rz98gaRjeNRn58QQteAUOTwgTA1oEROsnio11VtPLOO9Wsl8pvDlcuxO3B4gac4TBWhCMqX6dzhW3D-tWkHAtXob9kdRYO0a8cd-snXfA2ExdP0RufZ0P0_0MuDhFnG6w_wfhLbpJoiQlQayxvOJz24JCCFhAzU_fWkLvb2hIBV6pJ5gMm_8LeLkuxYgh0HDav0KPPWgMUa8maKEoabTM5qWw");'></div>
+</div>
+<div class="flex flex-col flex-1 h-full justify-between gap-2">
+<div>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight line-clamp-2">Beras Wangi 10kg</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Cap Rambutan</p>
+</div>
+<div class="flex items-end justify-between mt-1">
+<span class="text-[#111418] dark:text-white text-xl font-bold">RM 38.00</span>
+<button aria-label="Add to cart" class="bg-primary hover:bg-purple-800 text-white rounded-lg p-3 active:scale-95 transition-all flex items-center justify-center shadow-md shadow-purple-200 dark:shadow-none">
+<span class="material-symbols-outlined font-bold">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm gap-4">
+<div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-600">
+<div class="w-full h-full bg-center bg-cover" data-alt="Vitamin C supplement bottle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlpeZHJ3e_S18EaF5JzVSHEcMf97tUG3g2lMd3ic77pLTWxV5h6ov4lOmTeBOLwkAAe0EqTSHU9X4t8tGKeX0QPnVb74dAx1i9_Z05SrLw4kXf4-jdUSYIkWi-nbGBMqYml4g38wZwNqaWlk1yUd0g-8V1kpeMHn9oLp_q6_6qmiM52mXcrWt8vUdu-AjFX54wEqyIZaaLQVF6hlmyGckeMHxLYkmFrHhVQ2h7kMi4amfAPnsUYjsvQ7-ckIHfrLhS8ezJ3lRhAw");'></div>
+</div>
+<div class="flex flex-col flex-1 h-full justify-between gap-2">
+<div>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight line-clamp-2">Vitamin C 1000mg</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Blackmores - 60 Biji</p>
+</div>
+<div class="flex items-end justify-between mt-1">
+<span class="text-[#111418] dark:text-white text-xl font-bold">RM 45.90</span>
+<button aria-label="Add to cart" class="bg-primary hover:bg-purple-800 text-white rounded-lg p-3 active:scale-95 transition-all flex items-center justify-center shadow-md shadow-purple-200 dark:shadow-none">
+<span class="material-symbols-outlined font-bold">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm gap-4">
+<div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-gray-50 dark:bg-gray-700 border border-gray-100 dark:border-gray-600">
+<div class="w-full h-full bg-center bg-cover" data-alt="Bottle of cooking oil" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDoKNTJpMmGUaesQBX-fKlpnXwlifJ0KJxlrWZYoDL7Mp5RTZnFLaeC2UqS5DSo6FQFmRvKbqaax9MkIE5Z_4v523Wqyf3lyTpmFo1r5FA6aJg0ZY67M_wtYZlk3ZK8WnNe-jXQ6QywN4_tHTZeHHXcwIQqZ2J95Mz8ybTlqI6MU5XhL58-8h6ekJC9Qysx1OJXOzEq6FFvZRih0MonNdMbVBjo0tsD4nvJumvoCdqlUyHDbjUD4ZJNRo8qQAqMOluWCGnXl3uDkA");'></div>
+</div>
+<div class="flex flex-col flex-1 h-full justify-between gap-2">
+<div>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight line-clamp-2">Minyak Masak Saji</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm mt-1">5kg Botol</p>
+</div>
+<div class="flex items-end justify-between mt-1">
+<span class="text-[#111418] dark:text-white text-xl font-bold">RM 29.50</span>
+<button aria-label="Add to cart" class="bg-primary hover:bg-purple-800 text-white rounded-lg p-3 active:scale-95 transition-all flex items-center justify-center shadow-md shadow-purple-200 dark:shadow-none">
+<span class="material-symbols-outlined font-bold">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<button aria-label="AI Chatbot Help" class="absolute bottom-24 right-5 z-30 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-purple-500/40 hover:bg-purple-800 active:scale-90 transition-all border-2 border-white dark:border-gray-800">
+<span class="material-symbols-outlined text-[32px]">smart_toy</span>
+</button>
+<nav class="sticky bottom-0 z-20 w-full bg-white dark:bg-[#101922] border-t border-gray-200 dark:border-gray-800 px-2 py-2 pb-6 shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
+<div class="flex justify-around items-center">
+<button class="flex flex-col items-center justify-center w-20 py-1 text-primary gap-1">
+<span class="material-symbols-outlined text-3xl font-bold">home</span>
+<span class="text-xs font-bold">Utama</span>
+</button>
+<button class="flex flex-col items-center justify-center w-20 py-1 text-gray-400 dark:text-gray-500 gap-1 hover:text-gray-600 dark:hover:text-gray-300">
+<span class="material-symbols-outlined text-3xl">shopping_cart</span>
+<span class="text-xs font-medium">Troli</span>
+</button>
+<button class="flex flex-col items-center justify-center w-20 py-1 text-gray-400 dark:text-gray-500 gap-1 hover:text-gray-600 dark:hover:text-gray-300">
+<span class="material-symbols-outlined text-3xl">receipt_long</span>
+<span class="text-xs font-medium">Pesanan</span>
+</button>
+<button class="flex flex-col items-center justify-center w-20 py-1 text-gray-400 dark:text-gray-500 gap-1 hover:text-gray-600 dark:hover:text-gray-300">
+<span class="material-symbols-outlined text-3xl">person</span>
+<span class="text-xs font-medium">Saya</span>
+</button>
+</div>
+</nav>
+</div>
+
+</body></html>

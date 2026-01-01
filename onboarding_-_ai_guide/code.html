@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - AI Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#7e22ce", // Purple 700 for solid purple consistency
+                "background-light": "#f8f9fa",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Manrope", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="light">
+<div class="relative flex h-full min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden font-display transition-colors duration-200">
+<div class="flex px-6 py-4 justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-full border-2 border-primary bg-white px-6 py-2 text-primary transition-all hover:bg-purple-50 hover:border-purple-800 active:scale-95 dark:bg-slate-800 dark:border-primary dark:text-white dark:hover:bg-slate-700">
+<span class="text-base font-bold leading-normal tracking-wide">Skip</span>
+</button>
+</div>
+<div class="flex flex-1 flex-col justify-center items-center px-6 pb-6">
+<div class="w-full max-w-[320px] aspect-square flex items-center justify-center mb-8">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain" data-alt="Friendly 3D robot mascot waving hand with speech bubble icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAy3CGd_8Oyd0-RvcGwU09B263zxsP5mTTfxc9-x4Pa-F-aop-qOs6C6FJBXXTSQn3CyibUbaPQYXAhEm-AT_eyNZUPNxLTDC6dwMuzcGnNjRpyqDJx8TfiEjKzdVe6HbHDuMsuUFFfL11-20rF3dSAszB8T_Q-NwSamMa4t30bRoTFOWm19Jk-G-3NipxATgFy4SI6WJDLFAuqxKg6fPqbUTK4wSC2UkoZiXCfE8IoynI8hLpAICVs67IZDss3BHCR1cNH2L_F4Q");'>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 max-w-md text-center">
+<h1 class="text-[#111418] dark:text-white tracking-tight text-3xl md:text-4xl font-extrabold leading-tight px-2">
+                Get Help Anytime
+            </h1>
+<p class="text-slate-800 dark:text-slate-200 text-lg md:text-xl font-bold leading-relaxed pt-2">
+                Confused? Don't worry. Tap the microphone to talk to us in Malay, English, or Chinese.
+            </p>
+</div>
+</div>
+<div class="w-full px-6 pb-8 pt-4 flex flex-col items-center gap-6">
+<div class="flex flex-row items-center justify-center gap-3">
+<div class="h-2.5 w-2.5 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<div class="h-2.5 w-8 rounded-full bg-primary"></div>
+<div class="h-2.5 w-2.5 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+</div>
+<button class="flex w-full max-w-md cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary hover:bg-purple-800 active:bg-purple-900 text-white text-lg font-bold leading-normal tracking-[0.015em] transition-all shadow-lg shadow-purple-500/20">
+<span class="truncate">Next</span>
+<span class="material-symbols-outlined ml-2 text-[24px]">arrow_forward</span>
+</button>
+</div>
+</div>
+
+</body></html>

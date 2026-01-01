@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout - Simplified</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7C3AED", // Solid Purple for critical actions
+                        "background-light": "#F8F9FA", // Off-white background
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-large {
+            height: 3.5rem;font-size: 1.125rem;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased flex flex-col min-h-screen">
+<div class="sticky top-0 z-50 bg-white dark:bg-[#111418] border-b border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center p-4 justify-between h-16">
+<button aria-label="Go back" class="text-gray-900 dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full active:bg-gray-100 dark:active:bg-gray-800">
+<span class="material-symbols-outlined text-[28px]">arrow_back</span>
+</button>
+<h2 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Checkout</h2>
+<button class="flex h-12 items-center justify-end px-2 rounded-full active:bg-gray-100 dark:active:bg-gray-800">
+<span class="text-primary text-lg font-bold leading-normal tracking-[0.015em] shrink-0">Help</span>
+</button>
+</div>
+</div>
+<main class="flex-1 flex flex-col w-full max-w-md mx-auto pb-32">
+<div class="bg-white dark:bg-[#111418] pt-6 pb-4 px-4 w-full">
+<div class="flex w-full flex-row items-center justify-between gap-2">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-lg shadow-purple-500/30">1</div>
+<span class="text-xs font-bold text-primary">Address</span>
+</div>
+<div class="h-1 flex-1 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col items-center gap-2 flex-1 opacity-50">
+<div class="h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-600 font-bold">2</div>
+<span class="text-xs font-medium text-gray-600">Payment</span>
+</div>
+<div class="h-1 flex-1 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col items-center gap-2 flex-1 opacity-50">
+<div class="h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-600 font-bold">3</div>
+<span class="text-xs font-medium text-gray-600">Confirm</span>
+</div>
+</div>
+</div>
+<div class="h-2 w-full bg-background-light dark:bg-background-dark"></div>
+<div class="bg-white dark:bg-[#111418] px-5 pt-6 pb-2">
+<h2 class="text-gray-900 dark:text-white tracking-tight text-[26px] font-bold leading-tight">Shipping Details</h2>
+<p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-normal pt-2">Where should we deliver your order?</p>
+</div>
+<div class="flex flex-col gap-6 px-5 py-6 bg-white dark:bg-[#111418]">
+<label class="flex flex-col w-full">
+<span class="text-gray-900 dark:text-gray-200 text-lg font-semibold leading-normal pb-2">Full Name</span>
+<input class="form-input flex w-full rounded-xl text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary focus:ring-0 h-16 px-4 text-lg font-normal placeholder:text-gray-500" placeholder="e.g. Ali Bin Abu" type="text"/>
+</label>
+<label class="flex flex-col w-full">
+<span class="text-gray-900 dark:text-gray-200 text-lg font-semibold leading-normal pb-2">Phone Number</span>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+<span class="text-gray-700 text-lg font-medium">+60</span>
+</div>
+<input class="form-input flex w-full rounded-xl text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary focus:ring-0 h-16 pl-14 pr-4 text-lg font-normal placeholder:text-gray-500" placeholder="12 345 6789" type="tel"/>
+</div>
+</label>
+<label class="flex flex-col w-full">
+<div class="flex justify-between items-end pb-2">
+<span class="text-gray-900 dark:text-gray-200 text-lg font-semibold leading-normal">Full Address</span>
+<button class="flex items-center gap-1 text-primary text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-md active:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+<span>Tap to Speak</span>
+</button>
+</div>
+<textarea class="form-textarea flex w-full resize-none rounded-xl text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary focus:ring-0 p-4 text-lg font-normal min-h-[120px] placeholder:text-gray-500" placeholder="No. 123, Jalan Bunga Raya, Taman Indah..."></textarea>
+</label>
+<div class="flex flex-col gap-3 pt-2">
+<span class="text-gray-900 dark:text-gray-200 text-lg font-semibold leading-normal">Delivery Method</span>
+<div class="grid grid-cols-1 gap-4">
+<label class="relative flex items-center justify-between p-4 rounded-xl border-2 border-primary bg-primary/5 dark:bg-primary/10 cursor-pointer transition-all">
+<div class="flex items-center gap-4">
+<div class="bg-white dark:bg-gray-700 p-2 rounded-full shadow-sm text-primary">
+<span class="material-symbols-outlined text-[28px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="text-gray-900 dark:text-white text-lg font-bold">Home Delivery</span>
+<span class="text-sm text-gray-600 dark:text-gray-400 font-medium">2-3 working days</span>
+</div>
+</div>
+<input checked="" class="h-6 w-6 text-primary border-gray-300 focus:ring-primary" name="delivery" type="radio"/>
+</label>
+<label class="relative flex items-center justify-between p-4 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+<div class="flex items-center gap-4">
+<div class="bg-gray-100 dark:bg-gray-700 p-2 rounded-full text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[28px]">storefront</span>
+</div>
+<div class="flex flex-col">
+<span class="text-gray-900 dark:text-white text-lg font-bold">Self Pickup</span>
+<span class="text-sm text-gray-600 dark:text-gray-400 font-medium">Collect at nearest store</span>
+</div>
+</div>
+<input class="h-6 w-6 text-gray-400 border-gray-300 focus:ring-primary" name="delivery" type="radio"/>
+</label>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 w-full bg-white dark:bg-[#111418] border-t border-gray-200 dark:border-gray-800 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40">
+<div class="flex flex-col gap-3 max-w-md mx-auto">
+<div class="flex justify-between items-center px-1">
+<span class="text-gray-700 dark:text-gray-400 font-medium text-lg">Subtotal</span>
+<span class="text-gray-900 dark:text-white font-bold text-xl">RM 45.00</span>
+</div>
+<button class="flex w-full items-center justify-center gap-2 rounded-xl h-14 bg-primary hover:bg-purple-700 text-white shadow-lg shadow-purple-500/30 transition-all transform active:scale-[0.98]">
+<span class="text-lg font-bold tracking-wide">Next: Payment</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="fixed bottom-28 right-4 z-50 flex flex-col items-end gap-3">
+<button aria-label="Open AI Chatbot" class="flex items-center gap-3 pl-4 pr-2 py-2 bg-white dark:bg-gray-800 rounded-full shadow-lg shadow-gray-200/50 dark:shadow-black/50 border border-gray-100 dark:border-gray-700 active:scale-95 transition-transform group">
+<span class="text-sm font-bold text-gray-700 dark:text-gray-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">AI Chat</span>
+<div class="h-11 w-11 rounded-full bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-[24px]">smart_toy</span>
+</div>
+</button>
+<button aria-label="Start Voice Navigation" class="flex items-center gap-3 pl-4 pr-2 py-2 bg-white dark:bg-gray-800 rounded-full shadow-lg shadow-gray-200/50 dark:shadow-black/50 border border-gray-100 dark:border-gray-700 active:scale-95 transition-transform group">
+<span class="text-sm font-bold text-gray-700 dark:text-gray-200 group-hover:text-primary transition-colors">Voice Nav</span>
+<div class="h-11 w-11 rounded-full bg-primary flex items-center justify-center text-white shadow-md shadow-purple-500/40">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+</div>
+</button>
+</div>
+
+</body></html>

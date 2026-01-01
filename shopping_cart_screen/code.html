@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Cart</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7C3AED", // Solid Purple for critical actions
+                        "background-light": "#F8F9FA", // Off-white background
+                        "background-dark": "#101922",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1A2633",
+                        "text-main": "#111827", // High contrast black (Gray 900)
+                        "text-light": "#374151", // High contrast dark grey (Gray 700)
+                        "muted-red": "#EF5350", // Muted coral/red
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    .safe-area-bottom {
+        padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white overflow-x-hidden antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col">
+<div class="sticky top-0 z-50 flex items-center bg-card-light dark:bg-card-dark p-4 shadow-sm">
+<button aria-label="Go back" class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full active:bg-gray-100 dark:active:bg-gray-700">
+<span class="material-symbols-outlined text-[28px] text-text-main dark:text-white">arrow_back</span>
+</button>
+<h1 class="flex-1 text-center text-xl font-bold leading-tight tracking-tight pr-12 text-text-main dark:text-white">
+                My Cart
+            </h1>
+</div>
+<div class="flex-1 flex flex-col gap-4 p-4 pb-80">
+<div class="flex flex-col gap-3 rounded-xl bg-card-light dark:bg-card-dark p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg w-24 h-24 shrink-0 bg-gray-200" data-alt="Pack of 10kg Brand X Rice packaging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7970MswUpe0HXBFXeKo4Oe4oLk07l9mJosIktqya4PCvCF6haTJvAI_8LEVwVZOokZep6SqHM27MdR_o2WUsZz_a96JtjP0HIFVa33QXPSB0vL6tbz47yqEPzvKXp2MD4yaW1NQnN49yEW7YaEgfYLzqa3bWJtxuiC2qlTy0rw0cKQtg5Bn9SSy6Oe902BWSMGxD76Wtmk6U3vu_UPkjSXWM3RKDdisy8edBpmrWNG7VX22mNU5f_CIjk78XrnIMb5RQhC_o8qg");'>
+</div>
+<div class="flex flex-1 flex-col justify-between">
+<div>
+<p class="text-lg font-bold leading-snug text-text-main dark:text-white line-clamp-2">Brand X Rice 10kg</p>
+<p class="text-text-main dark:text-gray-200 text-xl font-bold mt-1">RM 28.00</p>
+</div>
+<button class="self-end flex items-center gap-1 text-muted-red hover:text-red-600 py-2 px-1">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+<span class="text-sm font-medium">Remove</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-3 mt-1">
+<span class="text-sm font-bold text-text-light dark:text-gray-400">Quantity</span>
+<div class="flex items-center gap-4 bg-gray-100 dark:bg-black/20 rounded-lg p-1">
+<button aria-label="Decrease quantity" class="flex h-10 w-10 items-center justify-center rounded-md bg-white dark:bg-gray-700 shadow-sm border border-gray-200 dark:border-gray-600 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-text-main dark:text-white">remove</span>
+</button>
+<input class="w-12 bg-transparent text-center text-xl font-bold text-text-main dark:text-white border-none focus:ring-0 p-0" readonly="" type="number" value="1"/>
+<button aria-label="Increase quantity" class="flex h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-card-light dark:bg-card-dark p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg w-24 h-24 shrink-0 bg-gray-200" data-alt="Box of Anlene Milk Powder on a table" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdEbw8R_ZmmoBa5lDt2UMpat-d6nW8gNV17jQMT3_0sUFbM9VS4-pSFrQ3Els0VovGBMKrBAU2UaUVuLq3JQS3QK1m3msTIKkkKGvtzwgXcIfTM_Qhyc4IXt9r5uPVULmh-cdt7g-TdGlyevSwgvBaejqvZFpS8bwhfBV-Vy5oKr0e8-hpQaSaelnHsIJG22pxXEr-dQtpHWz36inFFzx1rbrl_98ODcBysCQYRyDBaApihjV-qJIjQvvNFPibcASD_Ho4Hbiimw");'>
+</div>
+<div class="flex flex-1 flex-col justify-between">
+<div>
+<p class="text-lg font-bold leading-snug text-text-main dark:text-white line-clamp-2">Anlene Milk Powder</p>
+<p class="text-text-main dark:text-gray-200 text-xl font-bold mt-1">RM 35.50</p>
+</div>
+<button class="self-end flex items-center gap-1 text-muted-red hover:text-red-600 py-2 px-1">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+<span class="text-sm font-medium">Remove</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-3 mt-1">
+<span class="text-sm font-bold text-text-light dark:text-gray-400">Quantity</span>
+<div class="flex items-center gap-4 bg-gray-100 dark:bg-black/20 rounded-lg p-1">
+<button aria-label="Decrease quantity" class="flex h-10 w-10 items-center justify-center rounded-md bg-white dark:bg-gray-700 shadow-sm border border-gray-200 dark:border-gray-600 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-text-main dark:text-white">remove</span>
+</button>
+<input class="w-12 bg-transparent text-center text-xl font-bold text-text-main dark:text-white border-none focus:ring-0 p-0" readonly="" type="number" value="1"/>
+<button aria-label="Increase quantity" class="flex h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-2 rounded-xl bg-card-light dark:bg-card-dark p-5 shadow-sm border border-gray-100 dark:border-gray-800">
+<h3 class="text-base font-bold text-text-main dark:text-white mb-4">Order Summary</h3>
+<div class="flex justify-between gap-x-6 py-2 border-b border-gray-100 dark:border-gray-700/50">
+<p class="text-text-light dark:text-gray-400 text-base font-medium">Subtotal (2 items)</p>
+<p class="text-text-main dark:text-white text-base font-bold text-right">RM 63.50</p>
+</div>
+<div class="flex justify-between gap-x-6 py-2">
+<p class="text-text-light dark:text-gray-400 text-base font-medium">Delivery Fee</p>
+<p class="text-text-main dark:text-white text-base font-bold text-right">RM 5.00</p>
+</div>
+</div>
+<div class="h-4"></div>
+</div>
+<div class="fixed bottom-56 right-4 z-40 flex flex-col gap-3 pointer-events-none">
+<button aria-label="Activate Voice Navigation" class="pointer-events-auto group flex items-center gap-3 rounded-full bg-card-light dark:bg-card-dark py-2 pl-2 pr-5 shadow-lg border border-gray-100 dark:border-gray-700 active:scale-95 transition-all">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 border border-blue-100 dark:border-blue-800">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+</div>
+<span class="text-sm font-semibold text-text-main dark:text-white">Voice</span>
+</button>
+<button aria-label="Open AI Chat Assistant" class="pointer-events-auto group flex items-center gap-3 rounded-full bg-card-light dark:bg-card-dark py-2 pl-2 pr-5 shadow-lg border border-gray-100 dark:border-gray-700 active:scale-95 transition-all">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 border border-purple-100 dark:border-purple-800">
+<span class="material-symbols-outlined text-[24px]">smart_toy</span>
+</div>
+<span class="text-sm font-semibold text-text-main dark:text-white">AI Chat</span>
+</button>
+</div>
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-card-light dark:bg-card-dark border-t border-gray-200 dark:border-gray-800 p-4 shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.1)] safe-area-bottom">
+<div class="mx-auto w-full max-w-lg flex flex-col gap-4">
+<div class="flex justify-between items-center px-1">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-text-light dark:text-gray-400">Total Amount</span>
+<span class="text-2xl font-bold text-text-main dark:text-white">RM 68.50</span>
+</div>
+</div>
+<button class="flex w-full items-center justify-center gap-3 rounded-lg bg-primary py-4 px-6 transition-colors hover:bg-purple-700 active:bg-purple-800 shadow-md">
+<span class="text-lg font-bold text-white">Checkout Now</span>
+<span class="material-symbols-outlined text-white">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+
+</body></html>

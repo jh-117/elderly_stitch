@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login / Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans", "sans-serif"],
+                        "body": ["Lexend", "Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body>
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden font-display">
+<!-- Header with Image & Greeting -->
+<div class="@container">
+<div class="p-4 pt-6">
+<!-- Image Container with soft rounded corners for a friendly feel -->
+<div class="bg-cover bg-center flex flex-col justify-end overflow-hidden rounded-xl min-h-[240px] shadow-sm relative" data-alt="Senior citizens smiling while shopping online with tablet" style='background-image: linear-gradient(180deg, rgba(127, 19, 236, 0) 0%, rgba(127, 19, 236, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtu1zLTr9n7RmK-yw4WS-Ptm-taxWs_ybo2liPgs5JsNDjU4h65ZnYEcJkqDaJBBGNTmanQj1zHWjXtu48dJ1IEQKr91rUiYgBiEd8L9HQ_n2qw8gThTD6YgygNC7XPxekcPKYohBqvjRN8M1pNbiQQKGaY_2pa0e8G_CVMmBP_w_t0k76Jvvson0USTYRvrq71nuPLFH4sHv_BOV7Z2uGuIh-pknNbIA8HwZE5Bbf8dyFsf4GKsPYGzyAiEexMkqg1K6BDEBLhQ");'>
+<!-- Language Toggle Absolute Top Right -->
+<div class="absolute top-4 right-4 flex gap-2">
+<button class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary shadow-sm hover:bg-white">EN</button>
+<button class="bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-white hover:bg-black/40">BM</button>
+</div>
+<div class="flex flex-col p-6 w-full bg-gradient-to-t from-black/60 to-transparent">
+<h1 class="text-white tracking-tight text-[32px] font-bold leading-tight drop-shadow-md">Selamat Datang</h1>
+<p class="text-white/90 text-lg font-medium mt-1 drop-shadow-md">Welcome back to SeniorMart</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col px-4 pb-8 max-w-[480px] mx-auto w-full">
+<!-- Headline -->
+<h2 class="text-slate-900 dark:text-white tracking-tight text-[24px] font-bold leading-tight py-4">
+                Log in to your account
+            </h2>
+<!-- Phone/Email Input -->
+<div class="flex flex-col gap-1 mb-6">
+<label class="text-slate-900 dark:text-slate-100 text-lg font-medium leading-normal pb-2 ml-1" for="identity">
+                    Phone Number or Email
+                </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-primary text-2xl z-10">person</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-primary h-14 pl-12 placeholder:text-slate-400 dark:placeholder:text-slate-500 p-4 text-lg font-normal leading-normal shadow-sm" id="identity" placeholder="e.g. 012-3456789" value=""/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-1 mb-2">
+<label class="text-slate-900 dark:text-slate-100 text-lg font-medium leading-normal pb-2 ml-1" for="password">
+                    Password
+                </label>
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-4 text-primary text-2xl z-10">lock</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-primary h-14 pl-12 pr-14 placeholder:text-slate-400 dark:placeholder:text-slate-500 p-4 text-lg font-normal leading-normal shadow-sm" id="password" placeholder="Enter your password" type="password" value=""/>
+<button aria-label="Toggle password visibility" class="absolute right-2 top-2 bottom-2 aspect-square flex items-center justify-center text-primary hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-2xl">visibility</span>
+</button>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end mb-8 pr-1">
+<a class="text-primary hover:text-primary/80 text-base font-bold underline underline-offset-4 decoration-2 decoration-primary/30" href="#">
+                    Forgot Password?
+                </a>
+</div>
+<!-- Primary Action: Login -->
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-5 bg-primary hover:bg-primary/90 active:scale-[0.98] transition-all text-white text-lg font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30 mb-6">
+<span class="truncate">Log In</span>
+</button>
+<!-- Divider -->
+<div class="relative flex py-2 items-center mb-6">
+<div class="flex-grow border-t border-slate-300 dark:border-slate-600"></div>
+<span class="flex-shrink mx-4 text-slate-500 dark:text-slate-400 text-base font-medium">Don't have an account?</span>
+<div class="flex-grow border-t border-slate-300 dark:border-slate-600"></div>
+</div>
+<!-- Secondary Action: Register -->
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-5 bg-primary/10 border-2 border-primary/20 hover:bg-primary/20 hover:border-primary/40 active:scale-[0.98] transition-all text-primary text-lg font-bold leading-normal tracking-[0.015em] mb-8">
+<span class="truncate">Create New Account</span>
+</button>
+<!-- Social Login (Optional) -->
+<div class="flex flex-col items-center gap-4">
+<p class="text-slate-500 text-sm font-medium">Or continue with</p>
+<div class="flex gap-4">
+<button class="h-12 w-12 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center hover:bg-slate-50 transition-colors">
+<img alt="Google Logo" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9J6JN31zzLWpzs61QcrNEf8r8QdlVWKuZrUtQd8ycbFo-NTzhrTqNzZjamGA0_4vdMcU3Q8AODVQDri5PXm-wRJ2lfxwfUZCKUVgzBmuCNouziRruH2GDvPInTfWwnWDR1J8WGEYDb8qv_E60gwyHXnMaRy1Eo9yCGbnPqVJsXsfK5VZoUf-qIzAMSY4bLLXM9i6gYPSh1k_8oGDxs2ZHd4IEzhNQ0fewr-MS5GDPoc4z5C5Sm9CaxbPms6WBEWFTI0v0voYOoQ"/>
+</button>
+<button class="h-12 w-12 rounded-full bg-[#1877F2] shadow-sm flex items-center justify-center hover:bg-[#166fe5] transition-colors">
+<span class="text-white font-bold text-2xl">f</span>
+</button>
+</div>
+</div>
+</div>
+<div class="h-8"></div>
+</div>
+</body></html>
