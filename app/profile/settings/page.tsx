@@ -1,22 +1,25 @@
+"use client";
+
+import { useState } from "react";
 import { useSettingsStore } from "@/store/settingsStore";
 import { useRouter } from "next/navigation";
 import BottomNav from "@/components/layout/BottomNav";
+import TextSizeModal from "@/components/ui/TextSizeModal";
 
 export default function SettingsPage() {
     const router = useRouter();
+    const [isTextSizeOpen, setIsTextSizeOpen] = useState(false);
     const {
         darkMode, setDarkMode,
-        textSize, setTextSize,
+        textSize,
         notifications, setNotifications,
-        voiceGuide, setVoiceGuide,
-        language, setLanguage
+        voiceGuide, setVoiceGuide
     } = useSettingsStore();
 
     const toggleSetting = (key: string) => {
         if (key === "darkMode") setDarkMode(!darkMode);
         if (key === "notifications") setNotifications(!notifications);
         if (key === "voiceGuide") setVoiceGuide(!voiceGuide);
-        if (key === "largeText") setTextSize(textSize === 1 ? 0 : 1);
     };
 
     return (
@@ -71,28 +74,24 @@ export default function SettingsPage() {
                             </button>
                         </div>
 
-                        <div className="flex items-center justify-between p-4">
+                        <div
+                            className="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                            onClick={() => setIsTextSizeOpen(true)}
+                        >
                             <div className="flex items-center gap-3">
                                 <span className="material-symbols-outlined text-2xl">
                                     text_increase
                                 </span>
                                 <div>
-                                    <p className="font-semibold">Teks Besar (Large Text)</p>
+                                    <p className="font-semibold">Saiz Tulisan (Text Size)</p>
                                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                                        Besarkan saiz fon
+                                        {textSize === 0 ? "Biasa (Normal)" : textSize === 1 ? "Besar (Large)" : "Sangat Besar (Huge)"}
                                     </p>
                                 </div>
                             </div>
-                            <button
-                                onClick={() => toggleSetting("largeText")}
-                                className={`relative w-14 h-8 rounded-full transition-colors ${textSize >= 1 ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
-                                    }`}
-                            >
-                                <div
-                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${textSize >= 1 ? "translate-x-6" : ""
-                                        }`}
-                                />
-                            </button>
+                            <span className="material-symbols-outlined text-gray-400">
+                                chevron_right
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -149,9 +148,7 @@ export default function SettingsPage() {
                             </div>
                             <button
                                 onClick={() => toggleSetting("notifications")}
-                                className={`relative w-14 h-8 rounded-full transition-colors ${notifications
-                                    ? "bg-primary"
-                                    : "bg-gray-300 dark:bg-gray-600"
+                                className={`relative w-14 h-8 rounded-full transition-colors ${notifications ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
                                     }`}
                             >
                                 <div
@@ -208,21 +205,16 @@ export default function SettingsPage() {
                                 chevron_right
                             </span>
                         </button>
-                        <button className="w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                            <div className="flex items-center gap-3">
-                                <span className="material-symbols-outlined text-2xl">
-                                    privacy_tip
-                                </span>
-                                <span className="font-semibold">Dasar Privasi</span>
-                            </div>
-                            <span className="material-symbols-outlined text-gray-400">
-                                chevron_right
-                            </span>
-                        </button>
                     </div>
                 </div>
             </main>
 
+            {isTextSizeOpen && (
+                <TextSizeModal
+                    isOpen={isTextSizeOpen}
+                    onClose={() => setIsTextSizeOpen(false)}
+                />
+            )}
             <BottomNav />
         </>
     );

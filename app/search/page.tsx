@@ -125,7 +125,7 @@ export default function SearchPage() {
                     <div className="p-4">
                         <div className="flex items-center justify-between mb-3">
                             <h2 className="text-lg font-bold text-charcoal dark:text-white">
-                                (Recent)
+                                Carian Terkini (Recent)
                             </h2>
                             <button
                                 onClick={clearRecentSearches}

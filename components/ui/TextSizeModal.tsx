@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useSettingsStore } from "@/store/settingsStore";
 
 interface TextSizeModalProps {
     isOpen: boolean;
@@ -8,7 +8,7 @@ interface TextSizeModalProps {
 }
 
 export default function TextSizeModal({ isOpen, onClose }: TextSizeModalProps) {
-    const [size, setSize] = useState(1); // 0: Normal, 1: Besar, 2: Sangat Besar
+    const { textSize, setTextSize } = useSettingsStore();
 
     if (!isOpen) return null;
 
@@ -35,10 +35,10 @@ export default function TextSizeModal({ isOpen, onClose }: TextSizeModalProps) {
                     {sizes.map((s) => (
                         <button
                             key={s.value}
-                            onClick={() => setSize(s.value)}
-                            className={`w-full p-5 rounded-2xl border-4 flex flex-col items-start transition-all ${size === s.value
-                                    ? "border-primary bg-primary/5 shadow-md"
-                                    : "border-gray-100 dark:border-gray-800"
+                            onClick={() => setTextSize(s.value)}
+                            className={`w-full p-5 rounded-2xl border-4 flex flex-col items-start transition-all ${textSize === s.value
+                                ? "border-primary bg-primary/5 shadow-md"
+                                : "border-gray-100 dark:border-gray-800"
                                 }`}
                         >
                             <span className={`font-black mb-1 ${s.value === 0 ? "text-lg" : s.value === 1 ? "text-xl" : "text-2xl"
