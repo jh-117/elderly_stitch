@@ -9,6 +9,9 @@ import BottomNav from "@/components/layout/BottomNav";
 import FloatingAIButton from "@/components/ui/FloatingAIButton";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import VoiceModal from "@/components/ui/VoiceModal";
+import TextSizeModal from "@/components/ui/TextSizeModal";
 
 export default function HomePage() {
     const router = useRouter();
@@ -16,9 +19,14 @@ export default function HomePage() {
     const userName = user?.name || "Pengguna";
     const today = formatDateMalay(new Date());
     const recommendedProducts = getRecommendedProducts();
+    const [isVoiceOpen, setIsVoiceOpen] = useState(false);
+    const [isTextSizeOpen, setIsTextSizeOpen] = useState(false);
 
     return (
         <>
+            <VoiceModal isOpen={isVoiceOpen} onClose={() => setIsVoiceOpen(false)} />
+            <TextSizeModal isOpen={isTextSizeOpen} onClose={() => setIsTextSizeOpen(false)} />
+
             {/* Header */}
             <header className="flex items-center p-5 pb-2 justify-between bg-background-light dark:bg-[#101922] sticky top-0 z-10">
                 <div className="flex flex-col">
@@ -33,6 +41,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center justify-end gap-3">
                     <button
+                        onClick={() => setIsTextSizeOpen(true)}
                         aria-label="Increase text size"
                         className="flex items-center justify-center rounded-full h-12 w-12 bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-charcoal dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm"
                     >
@@ -67,6 +76,10 @@ export default function HomePage() {
                             Cari barang (Search)...
                         </span>
                         <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setIsVoiceOpen(true);
+                            }}
                             aria-label="AI Voice Navigation"
                             className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-purple-800 transition-colors active:scale-95"
                             title="Navigasi Suara (Voice Navigation)"

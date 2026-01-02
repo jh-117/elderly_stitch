@@ -20,8 +20,7 @@ export default function CheckoutPage() {
         // Simulate order processing
         setTimeout(() => {
             clearCart();
-            alert("Pesanan Berjaya! (Order Successful!) Thank you for your purchase!");
-            router.push("/orders");
+            router.push("/checkout/success");
         }, 2000);
     };
 
@@ -53,7 +52,10 @@ export default function CheckoutPage() {
                 <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-4 mb-4">
                     <div className="flex items-center justify-between mb-3">
                         <h2 className="font-bold text-lg">Alamat Penghantaran (Delivery Address)</h2>
-                        <button className="text-primary text-sm font-semibold hover:underline">
+                        <button
+                            onClick={() => router.push("/checkout/address")}
+                            className="text-primary text-sm font-semibold hover:underline"
+                        >
                             Ubah (Change)
                         </button>
                     </div>
@@ -79,7 +81,10 @@ export default function CheckoutPage() {
                         <h2 className="font-bold text-lg">
                             Kaedah Bayaran (Payment Method)
                         </h2>
-                        <button className="text-primary text-sm font-semibold hover:underline">
+                        <button
+                            onClick={() => router.push("/checkout/payment")}
+                            className="text-primary text-sm font-semibold hover:underline"
+                        >
                             Ubah (Change)
                         </button>
                     </div>
