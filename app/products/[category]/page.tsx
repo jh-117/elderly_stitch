@@ -118,7 +118,8 @@ export default function ProductListingPage({
                     {products.map((product) => (
                         <article
                             key={product.id}
-                            className="flex flex-col rounded-xl shadow-sm bg-white dark:bg-[#1a2632] overflow-hidden border border-gray-100 dark:border-gray-800"
+                            onClick={() => router.push(`/products/detail/${product.id}`)}
+                            className="flex flex-col rounded-xl shadow-sm bg-white dark:bg-[#1a2632] overflow-hidden border border-gray-100 dark:border-gray-800 cursor-pointer hover:shadow-md transition-shadow"
                         >
                             <div className="flex flex-col sm:flex-row h-full">
                                 <div className="relative w-full sm:w-48 aspect-[4/3] sm:aspect-square bg-gray-100 dark:bg-gray-800 shrink-0">
@@ -161,7 +162,8 @@ export default function ProductListingPage({
                                             </span>
                                         </div>
                                         <button
-                                            onClick={() => {
+                                            onClick={(e) => {
+                                                e.stopPropagation();
                                                 useCartStore.getState().addItem(product);
                                             }}
                                             className="flex items-center justify-center h-12 px-6 bg-white dark:bg-[#2a3844] border-2 border-primary text-primary hover:bg-primary-light dark:hover:bg-gray-700 text-base font-bold rounded-lg shadow-sm active:scale-95 transition-all"

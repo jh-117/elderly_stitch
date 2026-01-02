@@ -8,8 +8,10 @@ import ProductCard from "@/components/products/ProductCard";
 import BottomNav from "@/components/layout/BottomNav";
 import FloatingAIButton from "@/components/ui/FloatingAIButton";
 import { useAuthStore } from "@/store/authStore";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+    const router = useRouter();
     const user = useAuthStore((state) => state.user);
     const userName = user?.name || "Pengguna";
     const today = formatDateMalay(new Date());
@@ -39,6 +41,7 @@ export default function HomePage() {
                         </span>
                     </button>
                     <button
+                        onClick={() => router.push("/notifications")}
                         aria-label="Notifications"
                         className="flex items-center justify-center rounded-full h-12 w-12 bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-charcoal dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm"
                     >
@@ -53,26 +56,26 @@ export default function HomePage() {
             <main className="flex-1 overflow-y-auto pb-24">
                 {/* Search Bar */}
                 <div className="px-5 py-4">
-                    <label className="flex flex-col h-14 w-full cursor-text">
-                        <div className="flex w-full flex-1 items-center rounded-xl h-full border border-gray-200 dark:border-gray-700 focus-within:border-primary bg-white dark:bg-gray-800 transition-colors pr-2 shadow-sm">
-                            <div className="text-[#617589] dark:text-gray-400 flex items-center justify-center pl-4 pr-2">
-                                <span className="material-symbols-outlined text-3xl">search</span>
-                            </div>
-                            <input
-                                className="flex w-full flex-1 resize-none bg-transparent text-charcoal dark:text-white focus:outline-none h-full placeholder:text-[#617589] dark:placeholder:text-gray-500 px-2 text-lg font-normal"
-                                placeholder="Cari barang (Search)..."
-                            />
-                            <button
-                                aria-label="AI Voice Navigation"
-                                className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-purple-800 transition-colors active:scale-95"
-                                title="Navigasi Suara (Voice Navigation)"
-                            >
-                                <span className="material-symbols-outlined text-2xl font-bold">
-                                    mic
-                                </span>
-                            </button>
+                    <button
+                        onClick={() => router.push("/search")}
+                        className="flex w-full h-14 items-center rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-colors pr-2 shadow-sm"
+                    >
+                        <div className="text-[#617589] dark:text-gray-400 flex items-center justify-center pl-4 pr-2">
+                            <span className="material-symbols-outlined text-3xl">search</span>
                         </div>
-                    </label>
+                        <span className="flex-1 text-left text-[#617589] dark:text-gray-500 text-lg">
+                            Cari barang (Search)...
+                        </span>
+                        <button
+                            aria-label="AI Voice Navigation"
+                            className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-purple-800 transition-colors active:scale-95"
+                            title="Navigasi Suara (Voice Navigation)"
+                        >
+                            <span className="material-symbols-outlined text-2xl font-bold">
+                                mic
+                            </span>
+                        </button>
+                    </button>
                 </div>
 
                 {/* Categories Section */}

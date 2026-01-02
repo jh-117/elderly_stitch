@@ -35,7 +35,10 @@ export default function ProfilePage() {
 
                 {/* Menu Items */}
                 <div className="px-4 space-y-2">
-                    <button className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                    <button
+                        onClick={() => router.push("/profile/edit")}
+                        className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
                         <div className="flex items-center gap-3">
                             <span className="material-symbols-outlined text-2xl">edit</span>
                             <span className="font-medium">Edit Profil (Edit Profile)</span>
@@ -60,7 +63,10 @@ export default function ProfilePage() {
                         </span>
                     </button>
 
-                    <button className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                    <button
+                        onClick={() => router.push("/profile/addresses")}
+                        className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
                         <div className="flex items-center gap-3">
                             <span className="material-symbols-outlined text-2xl">
                                 location_on
@@ -72,7 +78,10 @@ export default function ProfilePage() {
                         </span>
                     </button>
 
-                    <button className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                    <button
+                        onClick={() => router.push("/profile/settings")}
+                        className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
                         <div className="flex items-center gap-3">
                             <span className="material-symbols-outlined text-2xl">settings</span>
                             <span className="font-medium">Tetapan (Settings)</span>
@@ -82,7 +91,10 @@ export default function ProfilePage() {
                         </span>
                     </button>
 
-                    <button className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                    <button
+                        onClick={() => router.push("/profile/help")}
+                        className="w-full flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    >
                         <div className="flex items-center gap-3">
                             <span className="material-symbols-outlined text-2xl">help</span>
                             <span className="font-medium">Bantuan (Help)</span>

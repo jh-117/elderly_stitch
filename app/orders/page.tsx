@@ -90,7 +90,10 @@ export default function OrdersPage() {
                                         {order.items} items • RM {order.total.toFixed(2)}
                                     </p>
                                 </div>
-                                <button className="text-primary font-semibold text-sm hover:underline">
+                                <button
+                                    onClick={() => router.push(`/orders/${order.id}`)}
+                                    className="text-primary font-semibold text-sm hover:underline"
+                                >
                                     Lihat Detail (View Details)
                                 </button>
                             </div>
