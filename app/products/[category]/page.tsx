@@ -6,6 +6,7 @@ import { categories } from "@/data/categories";
 import ProductCard from "@/components/products/ProductCard";
 import BottomNav from "@/components/layout/BottomNav";
 import { useCartStore } from "@/store/cartStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function ProductListingPage({
     params,
@@ -13,48 +14,52 @@ export default function ProductListingPage({
     params: { category: string };
 }) {
     const router = useRouter();
+    const { t, language } = useTranslation();
     const totalItemsInCart = useCartStore((state) => state.getTotalItems());
 
     const category = categories.find((c) => c.slug === params.category);
     const products = getProductsByCategory(params.category);
 
     if (!category) {
-        return <div>Category not found</div>;
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+                <div className="text-center p-8 bg-white dark:bg-gray-800 rounded-[32px] shadow-xl max-w-sm mx-auto">
+                    <span className="material-symbols-outlined text-6xl text-red-500 mb-4 font-bold">error</span>
+                    <h1 className="text-2xl font-black text-charcoal dark:text-white mb-2">
+                        {language === 'malay' ? "Kategori Tidak Ditemui" : "Category Not Found"}
+                    </h1>
+                    <button onClick={() => router.back()} className="mt-4 px-8 py-3 bg-primary text-white rounded-2xl font-black">
+                        {t.common.back}
+                    </button>
+                </div>
+            </div>
+        );
     }
 
+    const categoryName = language === 'malay' ? category.nameMalay : category.name;
+
     return (
-        <>
+        <div className="min-h-screen bg-gray-50 dark:bg-[#101922] flex flex-col">
             {/* Header */}
-            <header className="sticky top-0 z-50 bg-white dark:bg-[#1a2632] shadow-sm">
+            <header className="sticky top-0 z-50 bg-white/80 dark:bg-[#1a2632]/80 backdrop-blur-md shadow-sm">
                 <div className="flex items-center p-4 justify-between h-16">
                     <button
                         onClick={() => router.back()}
-                        aria-label="Go back"
-                        className="flex size-12 shrink-0 items-center justify-center rounded-full active:bg-gray-100 dark:active:bg-gray-700"
+                        aria-label={t.common.back}
+                        className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-gray-50 dark:bg-gray-800 text-charcoal dark:text-white"
                     >
-                        <span
-                            className="material-symbols-outlined text-charcoal dark:text-white"
-                            style={{ fontSize: "28px" }}
-                        >
-                            arrow_back
-                        </span>
+                        <span className="material-symbols-outlined text-[32px] font-bold">arrow_back</span>
                     </button>
-                    <h1 className="text-charcoal dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">
-                        {category.nameMalay}
+                    <h1 className="text-charcoal dark:text-white text-2xl font-black leading-tight tracking-tight flex-1 text-center px-4">
+                        {categoryName}
                     </h1>
                     <button
                         onClick={() => router.push("/cart")}
-                        aria-label="Cart"
-                        className="flex size-12 shrink-0 items-center justify-center rounded-full relative active:bg-gray-100 dark:active:bg-gray-700"
+                        className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary text-white relative shadow-lg shadow-primary/20 active:scale-90 transition-all"
                     >
-                        <span
-                            className="material-symbols-outlined text-charcoal dark:text-white"
-                            style={{ fontSize: "28px" }}
-                        >
-                            shopping_cart
-                        </span>
+                        <span className="material-symbols-outlined text-3xl font-bold">shopping_cart</span>
                         {totalItemsInCart > 0 && (
-                            <span className="absolute top-2 right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
+                            <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-xs font-black text-white shadow-lg border-2 border-white dark:border-gray-800 animate-bounce">
                                 {totalItemsInCart}
                             </span>
                         )}
@@ -62,126 +67,30 @@ export default function ProductListingPage({
                 </div>
             </header>
 
-            {/* Search Bar */}
-            <div className="px-4 py-3 bg-white dark:bg-[#1a2632]">
-                <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-[#f0f2f4] dark:bg-[#2a3844] overflow-hidden border border-gray-100 dark:border-gray-700">
-                    <div className="grid place-items-center h-full w-12 text-gray-500">
-                        <span className="material-symbols-outlined">search</span>
-                    </div>
-                    <input
-                        className="peer h-full w-full outline-none text-base text-gray-700 dark:text-gray-200 pr-2 bg-transparent placeholder-gray-500 font-display"
-                        placeholder="Search products..."
-                        type="text"
-                    />
-                </div>
-            </div>
-
-            {/* Filter Buttons */}
-            <div className="flex gap-3 px-4 py-3 overflow-x-auto no-scrollbar bg-white dark:bg-[#1a2632] border-b border-gray-100 dark:border-gray-800">
-                <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white pl-3 pr-4 active:scale-95 transition-transform shadow-sm">
-                    <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>
-                        sort
-                    </span>
-                    <span className="text-base font-medium leading-normal">Sort</span>
-                </button>
-                <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary-light dark:bg-primary/20 pl-3 pr-4 active:scale-95 transition-transform">
-                    <span
-                        className="material-symbols-outlined text-charcoal dark:text-gray-200"
-                        style={{ fontSize: "20px" }}
-                    >
-                        filter_list
-                    </span>
-                    <span className="text-charcoal dark:text-gray-200 text-base font-medium leading-normal">
-                        Filter
-                    </span>
-                </button>
-                <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary-light dark:bg-primary/20 pl-3 pr-4 active:scale-95 transition-transform">
-                    <span
-                        className="material-symbols-outlined text-charcoal dark:text-gray-200"
-                        style={{ fontSize: "20px" }}
-                    >
-                        thumb_up
-                    </span>
-                    <span className="text-charcoal dark:text-gray-200 text-base font-medium leading-normal">
-                        Top Rated
-                    </span>
-                </button>
-            </div>
-
             {/* Main Content */}
-            <main className="flex flex-col gap-4 p-4 pb-24">
-                <p className="text-[#617589] dark:text-gray-400 text-lg font-medium leading-normal px-1">
-                    Showing {products.length} items for you
-                </p>
+            <main className="flex-1 overflow-y-auto p-4 pb-24">
+                <div className="flex items-center justify-between mb-6 px-2">
+                    <p className="text-gray-400 text-lg font-bold tracking-wide uppercase">
+                        {products.length} {language === 'malay' ? "Produk" : "Products"}
+                    </p>
+                    <div className="flex gap-2">
+                        <button className="h-12 w-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center border border-gray-100 dark:border-gray-700 shadow-sm active:scale-90 transition-all">
+                            <span className="material-symbols-outlined font-black">sort</span>
+                        </button>
+                        <button className="h-12 w-12 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center border border-gray-100 dark:border-gray-700 shadow-sm active:scale-90 transition-all">
+                            <span className="material-symbols-outlined font-black">filter_list</span>
+                        </button>
+                    </div>
+                </div>
 
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1 gap-5">
                     {products.map((product) => (
-                        <article
-                            key={product.id}
-                            onClick={() => router.push(`/products/detail/${product.id}`)}
-                            className="flex flex-col rounded-xl shadow-sm bg-white dark:bg-[#1a2632] overflow-hidden border border-gray-100 dark:border-gray-800 cursor-pointer hover:shadow-md transition-shadow"
-                        >
-                            <div className="flex flex-col sm:flex-row h-full">
-                                <div className="relative w-full sm:w-48 aspect-[4/3] sm:aspect-square bg-gray-100 dark:bg-gray-800 shrink-0">
-                                    <div
-                                        className="absolute inset-0 bg-center bg-contain bg-no-repeat m-4"
-                                        style={{ backgroundImage: `url("${product.image}")` }}
-                                    ></div>
-                                    <button className="absolute top-2 right-2 p-2 bg-white/80 dark:bg-black/40 rounded-full backdrop-blur-sm">
-                                        <span className="material-symbols-outlined text-gray-500 dark:text-gray-300">
-                                            favorite
-                                        </span>
-                                    </button>
-                                </div>
-                                <div className="flex flex-col flex-1 p-4 justify-between gap-3">
-                                    <div className="flex flex-col gap-1">
-                                        <div className="flex items-center gap-1 text-yellow-500 mb-1">
-                                            <span className="material-symbols-outlined text-xl fill-current">
-                                                star
-                                            </span>
-                                            <span className="text-sm font-semibold text-[#617589] dark:text-gray-400">
-                                                {product.rating} ({product.reviews} reviews)
-                                            </span>
-                                        </div>
-                                        <h2 className="text-charcoal dark:text-white text-xl font-bold leading-tight">
-                                            {product.name}
-                                        </h2>
-                                        <p className="text-[#617589] dark:text-gray-400 text-sm line-clamp-2">
-                                            {product.description}
-                                        </p>
-                                    </div>
-                                    <div className="flex items-center justify-between mt-2">
-                                        <div className="flex flex-col">
-                                            {product.originalPrice && (
-                                                <span className="text-xs text-gray-500 dark:text-gray-400 line-through">
-                                                    RM {product.originalPrice.toFixed(2)}
-                                                </span>
-                                            )}
-                                            <span className="text-charcoal dark:text-white text-2xl font-bold">
-                                                RM {product.price.toFixed(2)}
-                                            </span>
-                                        </div>
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                useCartStore.getState().addItem(product);
-                                            }}
-                                            className="flex items-center justify-center h-12 px-6 bg-white dark:bg-[#2a3844] border-2 border-primary text-primary hover:bg-primary-light dark:hover:bg-gray-700 text-base font-bold rounded-lg shadow-sm active:scale-95 transition-all"
-                                        >
-                                            <span className="material-symbols-outlined mr-2">
-                                                add_shopping_cart
-                                            </span>
-                                            Add
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
+                        <ProductCard key={product.id} product={product} variant="horizontal" />
                     ))}
                 </div>
             </main>
 
             <BottomNav />
-        </>
+        </div>
     );
 }

@@ -4,197 +4,189 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import BottomNav from "@/components/layout/BottomNav";
 import { useCartStore } from "@/store/cartStore";
+import { useTranslation } from "@/hooks/useTranslation";
+import { formatCurrency } from "@/lib/utils";
 
 export default function ProductDetailPage({ params }: { params: { productId: string } }) {
     const router = useRouter();
+    const { t, language } = useTranslation();
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(0);
 
-    // Mock product data - in a real app, fetch from API
+    // Mock product data
     const product = {
         id: params.productId,
-        name: "Minyak Masak Saji (Cooking Oil)",
+        name: language === 'malay' ? "Minyak Masak Saji" : "Saji Cooking Oil",
         brand: "Saji",
         price: 24.90,
         originalPrice: 29.90,
         rating: 4.8,
         reviews: 324,
-        description:
-            "Minyak masak berkualiti tinggi yang sesuai untuk menggoreng dan memasak. Diperbuat daripada bahan pilihan untuk kesihatan keluarga anda.",
-        descriptionEn: "High quality cooking oil suitable for frying and cooking. Made from selected ingredients for your family's health.",
+        description: language === 'malay'
+            ? "Minyak masak berkualiti tinggi yang sesuai untuk menggoreng dan memasak. Diperbuat daripada bahan pilihan untuk kesihatan keluarga anda."
+            : "High quality cooking oil suitable for frying and cooking. Made from selected ingredients for your family's health.",
         stock: 48,
         category: "groceries",
         images: ["/products/oil.png", "/products/oil.png", "/products/oil.png"],
         specifications: [
-            { label: "Berat (Weight)", value: "1kg" },
-            { label: "Jenama (Brand)", value: "Saji" },
-            { label: "Jenis (Type)", value: "Minyak Sawit (Palm Oil)" },
-            { label: "Keluaran (Made in)", value: "Malaysia" },
+            { label: language === 'malay' ? "Berat" : "Weight", value: "1kg" },
+            { label: language === 'malay' ? "Jenama" : "Brand", value: "Saji" },
+            { label: language === 'malay' ? "Jenis" : "Type", value: language === 'malay' ? "Minyak Sawit" : "Palm Oil" },
+            { label: language === 'malay' ? "Keluaran" : "Made in", value: "Malaysia" },
         ],
-        features: [
-            "Kualiti premium untuk keluarga",
-            "Sesuai untuk menggoreng dan memasak",
-            "Dipercayai lebih 30 tahun",
-            "Halal dan selamat",
-        ],
+        features: language === 'malay'
+            ? ["Kualiti premium untuk keluarga", "Sesuai untuk menggoreng dan memasak", "Dipercayai lebih 30 tahun", "Halal dan selamat"]
+            : ["Premium quality for family", "Suitable for frying and cooking", "Trusted for over 30 years", "Halal and safe"],
     };
 
     const handleAddToCart = () => {
         for (let i = 0; i < quantity; i++) {
             useCartStore.getState().addItem(product as any);
         }
-        alert(`${quantity} item(s) ditambah ke troli!`);
+        alert(`${quantity} ${t.product.added_to_cart}`);
     };
 
     return (
-        <>
-            <header className="sticky top-0 z-50 bg-white dark:bg-[#1a2632] shadow-sm">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#101922] flex flex-col">
+            <header className="sticky top-0 z-50 bg-white/80 dark:bg-[#1a2632]/80 backdrop-blur-md shadow-sm">
                 <div className="flex items-center p-4 justify-between h-16">
                     <button
                         onClick={() => router.back()}
-                        aria-label="Go back"
-                        className="flex size-12 shrink-0 items-center justify-center rounded-full active:bg-gray-100 dark:active:bg-gray-700"
+                        aria-label={t.common.back}
+                        className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-gray-50 dark:bg-gray-800 text-charcoal dark:text-white"
                     >
-                        <span
-                            className="material-symbols-outlined text-charcoal dark:text-white"
-                            style={{ fontSize: "28px" }}
-                        >
-                            arrow_back
-                        </span>
+                        <span className="material-symbols-outlined text-[32px] font-bold">arrow_back</span>
                     </button>
-                    <h1 className="text-charcoal dark:text-white text-lg font-bold flex-1 text-center line-clamp-1">
-                        Butiran Produk
+                    <h1 className="text-charcoal dark:text-white text-xl font-black flex-1 text-center line-clamp-1 px-4">
+                        {t.product.details}
                     </h1>
                     <button
                         aria-label="Share"
-                        className="flex size-12 shrink-0 items-center justify-center rounded-full active:bg-gray-100 dark:active:bg-gray-700"
+                        className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-gray-50 dark:bg-gray-800 text-charcoal dark:text-white"
                     >
-                        <span className="material-symbols-outlined text-charcoal dark:text-white">
-                            share
-                        </span>
+                        <span className="material-symbols-outlined text-3xl font-bold">share</span>
                     </button>
                 </div>
             </header>
 
-            <main className="flex-1 overflow-y-auto pb-32">
+            <main className="flex-1 overflow-y-auto pb-64">
                 {/* Product Images */}
-                <div className="bg-white dark:bg-gray-800 p-4">
-                    <div className="relative aspect-square bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-b-[48px] shadow-sm">
+                    <div className="relative aspect-square bg-gray-50 dark:bg-gray-700/50 rounded-[40px] overflow-hidden border border-gray-100 dark:border-gray-700 shadow-inner">
                         <div
-                            className="absolute inset-0 bg-center bg-contain bg-no-repeat m-8"
+                            className="absolute inset-0 bg-center bg-contain bg-no-repeat m-10 transition-all duration-500"
                             style={{ backgroundImage: `url("${product.images[selectedImage]}")` }}
                         ></div>
-                        <button className="absolute top-4 right-4 p-3 bg-white/90 dark:bg-black/40 rounded-full backdrop-blur-sm shadow-lg">
-                            <span className="material-symbols-outlined text-red-500 text-2xl">
+                        <button className="absolute top-6 right-6 h-14 w-14 bg-white/90 dark:bg-black/40 rounded-2xl backdrop-blur-md shadow-xl flex items-center justify-center active:scale-90 transition-all">
+                            <span className="material-symbols-outlined text-red-500 text-3xl font-bold">
                                 favorite_border
                             </span>
                         </button>
                         {product.originalPrice && (
-                            <div className="absolute top-4 left-4 px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full">
-                                JIMAT{" "}
-                                {Math.round(
-                                    ((product.originalPrice - product.price) /
-                                        product.originalPrice) *
-                                    100
-                                )}
-                                %
+                            <div className="absolute top-6 left-6 px-4 py-2 bg-red-500 text-white text-base font-black rounded-2xl shadow-lg shadow-red-500/30">
+                                -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
                             </div>
                         )}
                     </div>
                     {/* Image Thumbnails */}
-                    <div className="flex gap-2 mt-3 justify-center">
+                    <div className="flex gap-4 mt-6 justify-center">
                         {product.images.map((_, idx) => (
                             <button
                                 key={idx}
                                 onClick={() => setSelectedImage(idx)}
-                                className={`w-16 h-16 rounded-lg border-2 ${selectedImage === idx
-                                        ? "border-primary"
-                                        : "border-gray-200 dark:border-gray-600"
-                                    } overflow-hidden bg-gray-100 dark:bg-gray-700`}
+                                className={`w-20 h-20 rounded-2xl border-4 transition-all duration-300 ${selectedImage === idx
+                                        ? "border-primary scale-110 shadow-lg shadow-primary/20"
+                                        : "border-gray-100 dark:border-gray-700 opacity-60 hover:opacity-100"
+                                    } overflow-hidden bg-white dark:bg-gray-700`}
                             >
-                                <div className="w-full h-full bg-white dark:bg-gray-800"></div>
+                                <div className="w-full h-full bg-center bg-contain bg-no-repeat m-2" style={{ backgroundImage: `url("${product.images[idx]}")` }}></div>
                             </button>
                         ))}
                     </div>
                 </div>
 
                 {/* Product Info */}
-                <div className="bg-white dark:bg-gray-800 p-5 mt-2">
-                    <div className="flex items-center gap-2 mb-2">
-                        <span className="px-2 py-1 bg-primary/10 text-primary text-xs font-semibold rounded">
-                            {product.brand}
-                        </span>
-                        <div className="flex items-center gap-1">
-                            <span className="material-symbols-outlined text-yellow-500 text-lg fill-current">
-                                star
+                <div className="bg-white dark:bg-gray-800 p-8 mt-4 rounded-[40px] shadow-sm mx-4 border border-gray-50 dark:border-gray-700">
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                            <span className="px-4 py-2 bg-primary/10 text-primary text-sm font-black rounded-xl uppercase tracking-widest">
+                                {product.brand}
                             </span>
-                            <span className="font-semibold text-sm">
-                                {product.rating} <span className="text-gray-400">({product.reviews})</span>
-                            </span>
+                            <div className="flex items-center gap-1.5 bg-yellow-50 dark:bg-yellow-900/10 px-3 py-2 rounded-xl">
+                                <span className="material-symbols-outlined text-yellow-500 text-2xl fill-current font-bold">star</span>
+                                <span className="font-black text-lg text-yellow-700 dark:text-yellow-500">
+                                    {product.rating} <span className="text-yellow-600/50 dark:text-yellow-600/50 font-bold">({product.reviews})</span>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
-                    <h1 className="text-2xl font-bold mb-2 text-charcoal dark:text-white">
+                    <h1 className="text-3xl font-black mb-4 text-charcoal dark:text-white leading-tight tracking-tight">
                         {product.name}
                     </h1>
 
-                    <div className="flex items-baseline gap-2 mb-4">
-                        <span className="text-3xl font-bold text-primary">
-                            RM {product.price.toFixed(2)}
+                    <div className="flex items-center gap-4 mb-6">
+                        <span className="text-4xl font-black text-primary">
+                            {formatCurrency(product.price)}
                         </span>
                         {product.originalPrice && (
-                            <span className="text-lg text-gray-400 line-through">
-                                RM {product.originalPrice.toFixed(2)}
+                            <span className="text-xl text-gray-300 line-through font-bold">
+                                {formatCurrency(product.originalPrice)}
                             </span>
                         )}
                     </div>
 
-                    <div className="flex items-center gap-2 text-sm">
-                        <span
-                            className={`flex items-center gap-1 ${product.stock > 0 ? "text-green-600" : "text-red-600"
-                                }`}
-                        >
-                            <span className="material-symbols-outlined text-lg">
+                    <div className="flex items-center gap-3">
+                        <div className={`flex items-center gap-2 px-4 py-2 rounded-xl text-base font-black ${product.stock > 0 ? "bg-green-50 text-green-600" : "bg-red-50 text-red-600"
+                            }`}>
+                            <span className="material-symbols-outlined text-2xl font-bold">
                                 {product.stock > 0 ? "check_circle" : "cancel"}
                             </span>
-                            {product.stock > 0 ? `In Stock (${product.stock} units)` : "Out of Stock"}
-                        </span>
+                            {product.stock > 0 ? `${t.product.in_stock} (${product.stock})` : t.product.out_of_stock}
+                        </div>
                     </div>
                 </div>
 
                 {/* Description */}
-                <div className="bg-white dark:bg-gray-800 p-5 mt-2">
-                    <h2 className="text-lg font-bold mb-3">Keterangan (Description)</h2>
-                    <p className="text-gray-600 dark:text-gray-400 mb-2">{product.description}</p>
-                    <p className="text-gray-500 dark:text-gray-500 text-sm">{product.descriptionEn}</p>
+                <div className="bg-white dark:bg-gray-800 p-8 mt-4 rounded-[40px] shadow-sm mx-4 border border-gray-50 dark:border-gray-700">
+                    <h2 className="text-2xl font-black mb-4 text-charcoal dark:text-white tracking-tight">
+                        {t.product.description}
+                    </h2>
+                    <p className="text-xl text-gray-500 dark:text-gray-400 font-bold leading-relaxed">
+                        {product.description}
+                    </p>
                 </div>
 
                 {/* Features */}
-                <div className="bg-white dark:bg-gray-800 p-5 mt-2">
-                    <h2 className="text-lg font-bold mb-3">Ciri-ciri (Features)</h2>
-                    <div className="space-y-2">
+                <div className="bg-white dark:bg-gray-800 p-8 mt-4 rounded-[40px] shadow-sm mx-4 border border-gray-50 dark:border-gray-700">
+                    <h2 className="text-2xl font-black mb-4 text-charcoal dark:text-white tracking-tight">
+                        {t.product.features}
+                    </h2>
+                    <div className="space-y-4">
                         {product.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-start gap-2">
-                                <span className="material-symbols-outlined text-primary text-xl mt-0.5">
-                                    check_circle
-                                </span>
-                                <span className="text-gray-600 dark:text-gray-400">{feature}</span>
+                            <div key={idx} className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-700 transition-all">
+                                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                    <span className="material-symbols-outlined text-primary text-xl font-black">check</span>
+                                </div>
+                                <span className="text-lg font-bold text-gray-600 dark:text-gray-300">{feature}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Specifications */}
-                <div className="bg-white dark:bg-gray-800 p-5 mt-2">
-                    <h2 className="text-lg font-bold mb-3">Spesifikasi (Specifications)</h2>
-                    <div className="space-y-3">
+                <div className="bg-white dark:bg-gray-800 p-8 mt-4 rounded-[40px] shadow-sm mx-4 border border-gray-50 dark:border-gray-700 mb-8">
+                    <h2 className="text-2xl font-black mb-4 text-charcoal dark:text-white tracking-tight">
+                        {t.product.specifications}
+                    </h2>
+                    <div className="space-y-4">
                         {product.specifications.map((spec, idx) => (
                             <div
                                 key={idx}
-                                className="flex justify-between pb-3 border-b border-gray-200 dark:border-gray-700 last:border-0"
+                                className="flex justify-between items-center py-4 border-b border-gray-100 dark:border-gray-700 last:border-0"
                             >
-                                <span className="text-gray-600 dark:text-gray-400">{spec.label}</span>
-                                <span className="font-semibold">{spec.value}</span>
+                                <span className="text-lg font-black text-gray-400 uppercase tracking-widest text-xs">{spec.label}</span>
+                                <span className="text-xl font-bold text-charcoal dark:text-white">{spec.value}</span>
                             </div>
                         ))}
                     </div>
@@ -202,37 +194,37 @@ export default function ProductDetailPage({ params }: { params: { productId: str
             </main>
 
             {/* Bottom Action Bar */}
-            <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#1a2632] border-t border-gray-200 dark:border-gray-700 p-4 shadow-lg z-10">
-                <div className="flex items-center gap-3">
+            <div className="fixed bottom-16 left-4 right-4 bg-white/90 dark:bg-[#1a2632]/90 backdrop-blur-lg border border-white dark:border-gray-800 p-6 shadow-[0_-15px_30px_rgba(0,0,0,0.1)] rounded-[32px] max-w-lg mx-auto z-50 transition-all">
+                <div className="flex items-center gap-4">
                     {/* Quantity Selector */}
-                    <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+                    <div className="flex items-center gap-4 bg-gray-50 dark:bg-gray-800 rounded-[24px] p-2 border border-gray-100 dark:border-gray-700">
                         <button
                             onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                            className="flex items-center justify-center w-10 h-10 rounded-lg bg-white dark:bg-gray-700 active:scale-95 transition-transform"
+                            className="flex items-center justify-center w-12 h-12 rounded-[18px] bg-white dark:bg-gray-700 shadow-sm active:scale-90 transition-all text-primary"
                         >
-                            <span className="material-symbols-outlined">remove</span>
+                            <span className="material-symbols-outlined font-black">remove</span>
                         </button>
-                        <span className="w-12 text-center font-bold text-lg">{quantity}</span>
+                        <span className="w-8 text-center font-black text-2xl text-charcoal dark:text-white">{quantity}</span>
                         <button
                             onClick={() => setQuantity(quantity + 1)}
-                            className="flex items-center justify-center w-10 h-10 rounded-lg bg-white dark:bg-gray-700 active:scale-95 transition-transform"
+                            className="flex items-center justify-center w-12 h-12 rounded-[18px] bg-primary text-white shadow-lg shadow-primary/20 active:scale-90 transition-all"
                         >
-                            <span className="material-symbols-outlined">add</span>
+                            <span className="material-symbols-outlined font-black">add</span>
                         </button>
                     </div>
 
                     {/* Add to Cart Button */}
                     <button
                         onClick={handleAddToCart}
-                        className="flex-1 h-14 rounded-xl bg-primary text-white font-bold text-lg hover:bg-purple-800 transition-colors active:scale-[0.98] shadow-lg flex items-center justify-center gap-2"
+                        className="flex-1 h-16 rounded-[24px] bg-primary text-white font-black text-xl hover:bg-purple-800 transition-all active:scale-[0.95] shadow-xl shadow-primary/30 flex items-center justify-center gap-3"
                     >
-                        <span className="material-symbols-outlined text-2xl">add_shopping_cart</span>
-                        Tambah ke Troli
+                        <span className="material-symbols-outlined text-3xl font-black">shopping_cart</span>
+                        {t.common.add_to_cart}
                     </button>
                 </div>
             </div>
 
             <BottomNav />
-        </>
+        </div>
     );
 }

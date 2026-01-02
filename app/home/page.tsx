@@ -1,6 +1,5 @@
 "use client";
 
-import { formatDateMalay } from "@/lib/utils";
 import { categories } from "@/data/categories";
 import { getRecommendedProducts } from "@/data/products";
 import CategoryCard from "@/components/products/CategoryCard";
@@ -12,51 +11,48 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import VoiceModal from "@/components/ui/VoiceModal";
 import TextSizeModal from "@/components/ui/TextSizeModal";
+import { useTranslation } from "@/hooks/useTranslation";
+import { formatDateMalay, formatDateEnglish } from "@/lib/utils";
 
 export default function HomePage() {
     const router = useRouter();
+    const { t, language } = useTranslation();
     const user = useAuthStore((state) => state.user);
-    const userName = user?.name || "Pengguna";
-    const today = formatDateMalay(new Date());
+    const userName = user?.name || (language === 'malay' ? "Pengguna" : "User");
+    const today = language === 'malay' ? formatDateMalay(new Date()) : formatDateEnglish(new Date());
     const recommendedProducts = getRecommendedProducts();
     const [isVoiceOpen, setIsVoiceOpen] = useState(false);
     const [isTextSizeOpen, setIsTextSizeOpen] = useState(false);
 
     return (
-        <>
+        <div className="min-h-screen bg-white dark:bg-[#101922] flex flex-col">
             <VoiceModal isOpen={isVoiceOpen} onClose={() => setIsVoiceOpen(false)} />
             <TextSizeModal isOpen={isTextSizeOpen} onClose={() => setIsTextSizeOpen(false)} />
 
             {/* Header */}
-            <header className="flex items-center p-5 pb-2 justify-between bg-background-light dark:bg-[#101922] sticky top-0 z-10">
+            <header className="flex items-center p-6 pb-4 justify-between bg-white/80 dark:bg-[#101922]/80 backdrop-blur-md sticky top-0 z-20">
                 <div className="flex flex-col">
-                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <span className="text-sm font-bold text-primary uppercase tracking-widest opacity-70">
                         {today}
                     </span>
-                    <h2 className="text-charcoal dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">
-                        Selamat Pagi,
+                    <h2 className="text-charcoal dark:text-white text-3xl font-black leading-tight tracking-tight">
+                        {t.home.greeting},
                         <br />
-                        {userName}
+                        <span className="text-primary">{userName}</span>
                     </h2>
                 </div>
-                <div className="flex items-center justify-end gap-3">
+                <div className="flex items-center gap-3">
                     <button
                         onClick={() => setIsTextSizeOpen(true)}
-                        aria-label="Increase text size"
-                        className="flex items-center justify-center rounded-full h-12 w-12 bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-charcoal dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm"
+                        className="flex items-center justify-center rounded-2xl h-14 w-14 bg-gray-50 dark:bg-gray-800 text-charcoal dark:text-white hover:bg-primary/10 hover:text-primary transition-all shadow-sm active:scale-90"
                     >
-                        <span className="material-symbols-outlined text-3xl">
-                            text_increase
-                        </span>
+                        <span className="material-symbols-outlined text-[32px] font-bold">text_increase</span>
                     </button>
                     <button
                         onClick={() => router.push("/notifications")}
-                        aria-label="Notifications"
-                        className="flex items-center justify-center rounded-full h-12 w-12 bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-charcoal dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm"
+                        className="flex items-center justify-center rounded-2xl h-14 w-14 bg-gray-50 dark:bg-gray-800 text-charcoal dark:text-white hover:bg-primary/10 hover:text-primary transition-all shadow-sm active:scale-90"
                     >
-                        <span className="material-symbols-outlined text-3xl">
-                            notifications
-                        </span>
+                        <span className="material-symbols-outlined text-[32px] font-bold">notifications</span>
                     </button>
                 </div>
             </header>
@@ -64,47 +60,43 @@ export default function HomePage() {
             {/* Main Content */}
             <main className="flex-1 overflow-y-auto pb-24">
                 {/* Search Bar */}
-                <div className="px-5 py-4">
+                <div className="px-6 py-4">
                     <button
                         onClick={() => router.push("/search")}
-                        className="flex w-full h-14 items-center rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-colors pr-2 shadow-sm"
+                        className="flex w-full h-18 items-center rounded-3xl border-2 border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50 hover:border-primary/30 transition-all pr-3 shadow-inner group"
                     >
-                        <div className="text-[#617589] dark:text-gray-400 flex items-center justify-center pl-4 pr-2">
-                            <span className="material-symbols-outlined text-3xl">search</span>
+                        <div className="text-gray-400 group-hover:text-primary flex items-center justify-center pl-5 pr-3 transition-colors">
+                            <span className="material-symbols-outlined text-3xl font-bold">search</span>
                         </div>
-                        <span className="flex-1 text-left text-[#617589] dark:text-gray-500 text-lg">
-                            Cari barang (Search)...
+                        <span className="flex-1 text-left text-gray-500 dark:text-gray-400 text-xl font-bold">
+                            {t.home.search_placeholder}
                         </span>
-                        <button
+                        <div
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setIsVoiceOpen(true);
                             }}
-                            aria-label="AI Voice Navigation"
-                            className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-purple-800 transition-colors active:scale-95"
-                            title="Navigasi Suara (Voice Navigation)"
+                            className="flex items-center justify-center h-12 w-12 rounded-2xl bg-primary text-white shadow-lg shadow-primary/30 hover:bg-purple-800 transition-all active:scale-90 cursor-pointer"
                         >
-                            <span className="material-symbols-outlined text-2xl font-bold">
-                                mic
-                            </span>
-                        </button>
+                            <span className="material-symbols-outlined text-2xl font-black">mic</span>
+                        </div>
                     </button>
                 </div>
 
                 {/* Categories Section */}
-                <section>
-                    <div className="flex justify-between items-center px-5 pt-2 pb-4">
-                        <h2 className="text-charcoal dark:text-white text-[22px] font-bold leading-tight">
-                            Kategori (Categories)
+                <section className="pt-4">
+                    <div className="flex justify-between items-end px-6 mb-5">
+                        <h2 className="text-charcoal dark:text-white text-2xl font-black leading-none">
+                            {t.home.categories}
                         </h2>
                         <button
                             onClick={() => router.push("/search")}
-                            className="text-primary text-sm font-bold uppercase tracking-wide hover:underline"
+                            className="text-primary text-sm font-black uppercase tracking-widest hover:underline px-2 py-1 rounded-lg hover:bg-primary/5 transition-all"
                         >
-                            Lihat Semua
+                            {t.common.view_all}
                         </button>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 px-5">
+                    <div className="grid grid-cols-2 gap-5 px-6">
                         {categories.map((category) => (
                             <CategoryCard key={category.id} category={category} />
                         ))}
@@ -112,19 +104,19 @@ export default function HomePage() {
                 </section>
 
                 {/* Recommended Products Section */}
-                <section className="mt-6">
-                    <div className="flex justify-between items-center px-5 py-4">
-                        <h2 className="text-charcoal dark:text-white text-[22px] font-bold leading-tight">
-                            Disyorkan (Recommended)
+                <section className="mt-10">
+                    <div className="flex justify-between items-end px-6 mb-5">
+                        <h2 className="text-charcoal dark:text-white text-2xl font-black leading-none">
+                            {t.home.recommended}
                         </h2>
                         <button
                             onClick={() => router.push("/products/groceries")}
-                            className="text-primary text-sm font-bold uppercase tracking-wide hover:underline"
+                            className="text-primary text-sm font-black uppercase tracking-widest hover:underline px-2 py-1 rounded-lg hover:bg-primary/5 transition-all"
                         >
-                            Lihat Semua
+                            {t.common.view_all}
                         </button>
                     </div>
-                    <div className="flex flex-col gap-4 px-5 pb-5">
+                    <div className="flex flex-col gap-5 px-6 pb-8">
                         {recommendedProducts.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
@@ -137,6 +129,6 @@ export default function HomePage() {
 
             {/* Bottom Navigation */}
             <BottomNav />
-        </>
+        </div>
     );
 }

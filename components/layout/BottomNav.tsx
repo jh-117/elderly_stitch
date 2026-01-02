@@ -3,70 +3,84 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function BottomNav() {
     const pathname = usePathname();
+    const { t } = useTranslation();
     const totalItems = useCartStore((state) => state.getTotalItems());
 
     const isActive = (path: string) => pathname === path;
 
     return (
-        <nav className="sticky bottom-0 z-20 w-full bg-white dark:bg-[#101922] border-t border-gray-200 dark:border-gray-800 px-2 py-2 pb-6 shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
+        <nav className="sticky bottom-0 z-20 w-full bg-white dark:bg-[#101922] border-t border-gray-100 dark:border-gray-800 px-2 py-2 pb-6 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
             <div className="flex justify-around items-center">
                 <Link
                     href="/home"
-                    className={`flex flex-col items-center justify-center w-20 py-1 gap-1 ${isActive("/home")
-                            ? "text-primary"
-                            : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
+                    className={`flex flex-col items-center justify-center w-20 py-2 gap-1.5 transition-all ${isActive("/home")
+                        ? "text-primary scale-110"
+                        : "text-gray-400 dark:text-gray-600 hover:text-primary"
                         }`}
                 >
                     <span
-                        className={`material-symbols-outlined text-3xl ${isActive("/home") ? "font-bold" : ""
+                        className={`material-symbols-outlined text-[32px] ${isActive("/home") ? "font-black fill-1" : "font-light"
                             }`}
                     >
                         home
                     </span>
-                    <span className={`text-xs ${isActive("/home") ? "font-bold" : "font-medium"}`}>
-                        Utama
+                    <span className={`text-[11px] uppercase tracking-widest ${isActive("/home") ? "font-black" : "font-bold"}`}>
+                        {t.common.home}
                     </span>
                 </Link>
 
                 <Link
                     href="/cart"
-                    className={`flex flex-col items-center justify-center w-20 py-1 gap-1 relative ${isActive("/cart")
-                            ? "text-primary"
-                            : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
+                    className={`flex flex-col items-center justify-center w-20 py-2 gap-1.5 relative transition-all ${isActive("/cart")
+                        ? "text-primary scale-110"
+                        : "text-gray-400 dark:text-gray-600 hover:text-primary"
                         }`}
                 >
-                    <span className="material-symbols-outlined text-3xl">shopping_cart</span>
+                    <span className={`material-symbols-outlined text-[32px] ${isActive("/cart") ? "font-black fill-1" : "font-light"}`}>
+                        shopping_cart
+                    </span>
                     {totalItems > 0 && (
-                        <span className="absolute top-0 right-4 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
+                        <span className="absolute top-1 right-3 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-[11px] font-black text-white shadow-lg shadow-red-500/40 animate-bounce">
                             {totalItems}
                         </span>
                     )}
-                    <span className="text-xs font-medium">Troli</span>
+                    <span className={`text-[11px] uppercase tracking-widest ${isActive("/cart") ? "font-black" : "font-bold"}`}>
+                        {t.common.cart}
+                    </span>
                 </Link>
 
                 <Link
                     href="/orders"
-                    className={`flex flex-col items-center justify-center w-20 py-1 gap-1 ${isActive("/orders")
-                            ? "text-primary"
-                            : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
+                    className={`flex flex-col items-center justify-center w-20 py-2 gap-1.5 transition-all ${isActive("/orders")
+                        ? "text-primary scale-110"
+                        : "text-gray-400 dark:text-gray-600 hover:text-primary"
                         }`}
                 >
-                    <span className="material-symbols-outlined text-3xl">receipt_long</span>
-                    <span className="text-xs font-medium">Pesanan</span>
+                    <span className={`material-symbols-outlined text-[32px] ${isActive("/orders") ? "font-black fill-1" : "font-light"}`}>
+                        receipt_long
+                    </span>
+                    <span className={`text-[11px] uppercase tracking-widest ${isActive("/orders") ? "font-black" : "font-bold"}`}>
+                        {t.common.orders}
+                    </span>
                 </Link>
 
                 <Link
                     href="/profile"
-                    className={`flex flex-col items-center justify-center w-20 py-1 gap-1 ${isActive("/profile")
-                            ? "text-primary"
-                            : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
+                    className={`flex flex-col items-center justify-center w-20 py-2 gap-1.5 transition-all ${isActive("/profile")
+                        ? "text-primary scale-110"
+                        : "text-gray-400 dark:text-gray-600 hover:text-primary"
                         }`}
                 >
-                    <span className="material-symbols-outlined text-3xl">person</span>
-                    <span className="text-xs font-medium">Saya</span>
+                    <span className={`material-symbols-outlined text-[32px] ${isActive("/profile") ? "font-black fill-1" : "font-light"}`}>
+                        person
+                    </span>
+                    <span className={`text-[11px] uppercase tracking-widest ${isActive("/profile") ? "font-black" : "font-bold"}`}>
+                        {t.common.profile}
+                    </span>
                 </Link>
             </div>
         </nav>

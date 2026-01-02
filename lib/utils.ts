@@ -24,3 +24,11 @@ export function formatDateMalay(date: string | Date): string {
 
     return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
 }
+
+export function formatDateEnglish(date: string | Date): string {
+    const d = typeof date === 'string' ? new Date(date) : date;
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
+}
