@@ -97,6 +97,12 @@ export default function HomePage() {
                         <h2 className="text-charcoal dark:text-white text-[22px] font-bold leading-tight">
                             Kategori (Categories)
                         </h2>
+                        <button
+                            onClick={() => router.push("/search")}
+                            className="text-primary text-sm font-bold uppercase tracking-wide hover:underline"
+                        >
+                            Lihat Semua
+                        </button>
                     </div>
                     <div className="grid grid-cols-2 gap-4 px-5">
                         {categories.map((category) => (
@@ -111,6 +117,12 @@ export default function HomePage() {
                         <h2 className="text-charcoal dark:text-white text-[22px] font-bold leading-tight">
                             Disyorkan (Recommended)
                         </h2>
+                        <button
+                            onClick={() => router.push("/products/groceries")}
+                            className="text-primary text-sm font-bold uppercase tracking-wide hover:underline"
+                        >
+                            Lihat Semua
+                        </button>
                     </div>
                     <div className="flex flex-col gap-4 px-5 pb-5">
                         {recommendedProducts.map((product) => (
@@ -121,7 +133,7 @@ export default function HomePage() {
             </main>
 
             {/* Floating AI Button */}
-            <FloatingAIButton />
+            <FloatingAIButton onTriggerVoice={() => setIsVoiceOpen(true)} />
 
             {/* Bottom Navigation */}
             <BottomNav />

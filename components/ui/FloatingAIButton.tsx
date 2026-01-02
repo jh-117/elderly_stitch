@@ -2,17 +2,29 @@
 
 import { useState } from "react";
 
-export default function FloatingAIButton() {
+interface FloatingAIButtonProps {
+    onTriggerVoice?: () => void;
+}
+
+export default function FloatingAIButton({ onTriggerVoice }: FloatingAIButtonProps) {
     const [showChatbot, setShowChatbot] = useState(false);
+
+    const handleVoiceClick = () => {
+        if (onTriggerVoice) {
+            onTriggerVoice();
+        } else {
+            setShowChatbot(true);
+        }
+    };
 
     return (
         <>
             <button
-                onClick={() => setShowChatbot(!showChatbot)}
-                aria-label="AI Chatbot Help"
+                onClick={handleVoiceClick}
+                aria-label="AI Voice Assistant"
                 className="fixed bottom-24 right-5 z-30 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-purple-500/40 hover:bg-purple-800 active:scale-90 transition-all border-2 border-white dark:border-gray-800"
             >
-                <span className="material-symbols-outlined text-[32px]">smart_toy</span>
+                <span className="material-symbols-outlined text-[32px]">mic</span>
             </button>
 
             {showChatbot && (

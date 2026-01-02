@@ -12,12 +12,12 @@ export default function SearchPage() {
     const [searchFocused, setSearchFocused] = useState(false);
 
     // Mock search results - in a real app, filter based on searchQuery
-    const recentSearches = [
+    const [recentSearches, setRecentSearches] = useState([
         "Beras (Rice)",
         "Minyak Masak (Cooking Oil)",
         "Susu (Milk)",
         "Roti (Bread)",
-    ];
+    ]);
 
     const popularSearches = [
         "Gula (Sugar)",
@@ -26,6 +26,8 @@ export default function SearchPage() {
         "Kopi (Coffee)",
         "Teh (Tea)",
     ];
+
+    const clearRecentSearches = () => setRecentSearches([]);
 
     const searchResults = searchQuery.length > 0 ? getRecommendedProducts().slice(0, 5) : [];
 
@@ -51,8 +53,8 @@ export default function SearchPage() {
                         <label className="flex flex-col h-12 w-full cursor-text">
                             <div
                                 className={`flex w-full flex-1 items-center rounded-xl h-full border ${searchFocused
-                                        ? "border-primary"
-                                        : "border-gray-200 dark:border-gray-700"
+                                    ? "border-primary"
+                                    : "border-gray-200 dark:border-gray-700"
                                     } bg-white dark:bg-gray-800 transition-colors pr-2`}
                             >
                                 <div className="text-[#617589] dark:text-gray-400 flex items-center justify-center pl-4 pr-2">
@@ -123,9 +125,12 @@ export default function SearchPage() {
                     <div className="p-4">
                         <div className="flex items-center justify-between mb-3">
                             <h2 className="text-lg font-bold text-charcoal dark:text-white">
-                                Carian Terkini (Recent)
+                                (Recent)
                             </h2>
-                            <button className="text-sm text-primary font-semibold hover:underline">
+                            <button
+                                onClick={clearRecentSearches}
+                                className="text-sm text-primary font-semibold hover:underline"
+                            >
                                 Padam Semua (Clear)
                             </button>
                         </div>
@@ -169,7 +174,7 @@ export default function SearchPage() {
                     </div>
                 )}
 
-                {/* Categories Quick Access */}
+                {/* Regions/Categories Quick Access */}
                 {!searchQuery && (
                     <div className="p-4 pt-2">
                         <h2 className="text-lg font-bold mb-3 text-charcoal dark:text-white">
@@ -177,13 +182,14 @@ export default function SearchPage() {
                         </h2>
                         <div className="grid grid-cols-2 gap-3">
                             {[
-                                { name: "Makanan (Groceries)", icon: "shopping_basket" },
-                                { name: "Dapur (Kitchen)", icon: "restaurant" },
-                                { name: "Kesihatan (Health)", icon: "medication" },
-                                { name: "Penjagaan (Personal Care)", icon: "spa" },
+                                { name: "Barang Dapur (Groceries)", icon: "shopping_basket", slug: "groceries" },
+                                { name: "Kesihatan (Health)", icon: "medication", slug: "health" },
+                                { name: "Rumah (Home)", icon: "home", slug: "home" },
+                                { name: "Ubat-ubatan (Medicine)", icon: "pill", slug: "medicine" },
                             ].map((category, idx) => (
                                 <button
                                     key={idx}
+                                    onClick={() => router.push(`/products/${category.slug}`)}
                                     className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                                 >
                                     <div className="h-12 w-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">

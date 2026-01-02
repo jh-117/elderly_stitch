@@ -1,21 +1,22 @@
-"use client";
-
-import { useState } from "react";
+import { useSettingsStore } from "@/store/settingsStore";
 import { useRouter } from "next/navigation";
 import BottomNav from "@/components/layout/BottomNav";
 
 export default function SettingsPage() {
     const router = useRouter();
-    const [settings, setSettings] = useState({
-        darkMode: false,
-        notifications: true,
-        voiceGuide: true,
-        largeText: false,
-        language: "malay",
-    });
+    const {
+        darkMode, setDarkMode,
+        textSize, setTextSize,
+        notifications, setNotifications,
+        voiceGuide, setVoiceGuide,
+        language, setLanguage
+    } = useSettingsStore();
 
-    const toggleSetting = (key: keyof typeof settings) => {
-        setSettings({ ...settings, [key]: !settings[key] });
+    const toggleSetting = (key: string) => {
+        if (key === "darkMode") setDarkMode(!darkMode);
+        if (key === "notifications") setNotifications(!notifications);
+        if (key === "voiceGuide") setVoiceGuide(!voiceGuide);
+        if (key === "largeText") setTextSize(textSize === 1 ? 0 : 1);
     };
 
     return (
@@ -60,11 +61,11 @@ export default function SettingsPage() {
                             </div>
                             <button
                                 onClick={() => toggleSetting("darkMode")}
-                                className={`relative w-14 h-8 rounded-full transition-colors ${settings.darkMode ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
+                                className={`relative w-14 h-8 rounded-full transition-colors ${darkMode ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
                                     }`}
                             >
                                 <div
-                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${settings.darkMode ? "translate-x-6" : ""
+                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${darkMode ? "translate-x-6" : ""
                                         }`}
                                 />
                             </button>
@@ -84,11 +85,11 @@ export default function SettingsPage() {
                             </div>
                             <button
                                 onClick={() => toggleSetting("largeText")}
-                                className={`relative w-14 h-8 rounded-full transition-colors ${settings.largeText ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
+                                className={`relative w-14 h-8 rounded-full transition-colors ${textSize >= 1 ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
                                     }`}
                             >
                                 <div
-                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${settings.largeText ? "translate-x-6" : ""
+                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${textSize >= 1 ? "translate-x-6" : ""
                                         }`}
                                 />
                             </button>
@@ -116,11 +117,11 @@ export default function SettingsPage() {
                             </div>
                             <button
                                 onClick={() => toggleSetting("voiceGuide")}
-                                className={`relative w-14 h-8 rounded-full transition-colors ${settings.voiceGuide ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
+                                className={`relative w-14 h-8 rounded-full transition-colors ${voiceGuide ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
                                     }`}
                             >
                                 <div
-                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${settings.voiceGuide ? "translate-x-6" : ""
+                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${voiceGuide ? "translate-x-6" : ""
                                         }`}
                                 />
                             </button>
@@ -148,13 +149,13 @@ export default function SettingsPage() {
                             </div>
                             <button
                                 onClick={() => toggleSetting("notifications")}
-                                className={`relative w-14 h-8 rounded-full transition-colors ${settings.notifications
-                                        ? "bg-primary"
-                                        : "bg-gray-300 dark:bg-gray-600"
+                                className={`relative w-14 h-8 rounded-full transition-colors ${notifications
+                                    ? "bg-primary"
+                                    : "bg-gray-300 dark:bg-gray-600"
                                     }`}
                             >
                                 <div
-                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${settings.notifications ? "translate-x-6" : ""
+                                    className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white transition-transform ${notifications ? "translate-x-6" : ""
                                         }`}
                                 />
                             </button>
