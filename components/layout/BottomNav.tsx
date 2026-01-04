@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -9,6 +10,11 @@ export default function BottomNav() {
     const pathname = usePathname();
     const { t } = useTranslation();
     const totalItems = useCartStore((state) => state.getTotalItems());
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const isActive = (path: string) => pathname === path;
 
@@ -43,7 +49,7 @@ export default function BottomNav() {
                     <span className={`material-symbols-outlined text-[32px] ${isActive("/cart") ? "font-black fill-1" : "font-light"}`}>
                         shopping_cart
                     </span>
-                    {totalItems > 0 && (
+                    {isMounted && totalItems > 0 && (
                         <span className="absolute top-1 right-3 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-[11px] font-black text-white shadow-lg shadow-red-500/40 animate-bounce">
                             {totalItems}
                         </span>

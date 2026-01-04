@@ -6,6 +6,7 @@ import BottomNav from "@/components/layout/BottomNav";
 import { useCartStore } from "@/store/cartStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { formatCurrency } from "@/lib/utils";
+import { getProductById } from "@/data/products";
 
 export default function ProductDetailPage({ params }: { params: { productId: string } }) {
     const router = useRouter();
@@ -13,38 +14,53 @@ export default function ProductDetailPage({ params }: { params: { productId: str
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(0);
 
-    // Mock product data
-    const product = {
-        id: params.productId,
-        name: language === 'malay' ? "Minyak Masak Saji" : "Saji Cooking Oil",
-        brand: "Saji",
-        price: 24.90,
-        originalPrice: 29.90,
-        rating: 4.8,
-        reviews: 324,
-        description: language === 'malay'
-            ? "Minyak masak berkualiti tinggi yang sesuai untuk menggoreng dan memasak. Diperbuat daripada bahan pilihan untuk kesihatan keluarga anda."
-            : "High quality cooking oil suitable for frying and cooking. Made from selected ingredients for your family's health.",
-        stock: 48,
-        category: "groceries",
-        images: ["/products/oil.png", "/products/oil.png", "/products/oil.png"],
+    // Get actual product data
+    const productData = getProductById(params.productId);
+
+    // Map data to the view model
+    const product = productData ? {
+        id: productData.id,
+        name: language === 'malay' ? productData.nameMalay : productData.name,
+        brand: productData.brand,
+        price: productData.price,
+        originalPrice: productData.originalPrice || productData.price * 1.2,
+        rating: productData.rating,
+        reviews: productData.reviews,
+        description: language === 'malay' ? productData.descriptionMalay : productData.description,
+        stock: productData.inStock ? 48 : 0,
+        category: productData.category,
+        images: [productData.image, productData.image, productData.image],
         specifications: [
-            { label: language === 'malay' ? "Berat" : "Weight", value: "1kg" },
-            { label: language === 'malay' ? "Jenama" : "Brand", value: "Saji" },
-            { label: language === 'malay' ? "Jenis" : "Type", value: language === 'malay' ? "Minyak Sawit" : "Palm Oil" },
+            { label: language === 'malay' ? "Berat" : "Weight", value: productData.id.includes("10kg") ? "10kg" : "500g" },
+            { label: language === 'malay' ? "Jenama" : "Brand", value: productData.brand },
             { label: language === 'malay' ? "Keluaran" : "Made in", value: "Malaysia" },
         ],
         features: language === 'malay'
-            ? ["Kualiti premium untuk keluarga", "Sesuai untuk menggoreng dan memasak", "Dipercayai lebih 30 tahun", "Halal dan selamat"]
-            : ["Premium quality for family", "Suitable for frying and cooking", "Trusted for over 30 years", "Halal and safe"],
-    };
+            ? ["Kualiti premium untuk keluarga", "Dijamin segar dan bersih", "Dipercayai ramai", "Halal dan selamat"]
+            : ["Premium quality for family", "Guaranteed fresh and clean", "Trusted by many", "Halal and safe"],
+    } : null;
 
     const handleAddToCart = () => {
-        for (let i = 0; i < quantity; i++) {
-            useCartStore.getState().addItem(product as any);
-        }
+        if (!product) return;
+        useCartStore.getState().addItem(productData as any);
         alert(`${quantity} ${t.product.added_to_cart}`);
     };
+
+    if (!product) {
+        return (
+            <div className="min-h-screen flex items-center justify-center p-6 text-center">
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 text-charcoal dark:text-white">Product not found</h2>
+                    <button
+                        onClick={() => router.back()}
+                        className="px-6 py-3 bg-primary text-white rounded-2xl font-bold shadow-lg"
+                    >
+                        {t.common.back}
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-[#101922] flex flex-col">
@@ -90,16 +106,16 @@ export default function ProductDetailPage({ params }: { params: { productId: str
                     </div>
                     {/* Image Thumbnails */}
                     <div className="flex gap-4 mt-6 justify-center">
-                        {product.images.map((_, idx) => (
+                        {product.images.map((img, idx) => (
                             <button
                                 key={idx}
                                 onClick={() => setSelectedImage(idx)}
                                 className={`w-20 h-20 rounded-2xl border-4 transition-all duration-300 ${selectedImage === idx
-                                        ? "border-primary scale-110 shadow-lg shadow-primary/20"
-                                        : "border-gray-100 dark:border-gray-700 opacity-60 hover:opacity-100"
-                                    } overflow-hidden bg-white dark:bg-gray-700`}
+                                    ? "border-primary scale-110 shadow-lg shadow-primary/20"
+                                    : "border-gray-100 dark:border-gray-700 opacity-60 hover:opacity-100"
+                                    } overflow-hidden bg-white dark:bg-gray-700 p-2`}
                             >
-                                <div className="w-full h-full bg-center bg-contain bg-no-repeat m-2" style={{ backgroundImage: `url("${product.images[idx]}")` }}></div>
+                                <div className="w-full h-full bg-center bg-contain bg-no-repeat" style={{ backgroundImage: `url("${img}")` }}></div>
                             </button>
                         ))}
                     </div>
@@ -194,7 +210,7 @@ export default function ProductDetailPage({ params }: { params: { productId: str
             </main>
 
             {/* Bottom Action Bar */}
-            <div className="fixed bottom-16 left-4 right-4 bg-white/90 dark:bg-[#1a2632]/90 backdrop-blur-lg border border-white dark:border-gray-800 p-6 shadow-[0_-15px_30px_rgba(0,0,0,0.1)] rounded-[32px] max-w-lg mx-auto z-50 transition-all">
+            <div className="fixed bottom-16 left-4 right-4 bg-white/90 dark:bg-[#1a2632]/90 backdrop-blur-lg border border-white dark:border-gray-800 p-6 shadow-[0_-15px_30px_rgba(0,0,0,0.1)] rounded-[32px] max-w-md mx-auto z-50 transition-all">
                 <div className="flex items-center gap-4">
                     {/* Quantity Selector */}
                     <div className="flex items-center gap-4 bg-gray-50 dark:bg-gray-800 rounded-[24px] p-2 border border-gray-100 dark:border-gray-700">

@@ -163,7 +163,7 @@ export default function CartPage() {
             </main>
 
             {/* Bottom Summary & Checkout */}
-            <div className="fixed bottom-20 left-4 right-4 bg-white/90 dark:bg-[#1a2632]/90 backdrop-blur-lg rounded-[32px] border border-white dark:border-gray-800 p-6 shadow-[0_-20px_40px_rgba(0,0,0,0.1)] max-w-lg mx-auto z-10 transition-all">
+            <div className="fixed bottom-20 left-4 right-4 bg-white/90 dark:bg-[#1a2632]/90 backdrop-blur-lg rounded-[32px] border border-white dark:border-gray-800 p-6 shadow-[0_-20px_40px_rgba(0,0,0,0.1)] max-w-md mx-auto z-10 transition-all">
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <div className="flex justify-between items-center text-lg">

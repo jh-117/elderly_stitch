@@ -124,8 +124,6 @@ export default function HomePage() {
                 </section>
             </main>
 
-            {/* Floating AI Button */}
-            <FloatingAIButton onTriggerVoice={() => setIsVoiceOpen(true)} />
 
             {/* Bottom Navigation */}
             <BottomNav />

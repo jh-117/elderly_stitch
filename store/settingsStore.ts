@@ -7,11 +7,15 @@ interface SettingsStore {
     notifications: boolean;
     voiceGuide: boolean;
     language: 'malay' | 'english';
+    isAiNavigating: boolean;
+    lastAiSearchQuery: string;
     setDarkMode: (enabled: boolean) => void;
     setTextSize: (size: number) => void;
     setNotifications: (enabled: boolean) => void;
     setVoiceGuide: (enabled: boolean) => void;
     setLanguage: (lang: 'malay' | 'english') => void;
+    setIsAiNavigating: (isNavigating: boolean) => void;
+    setLastAiSearchQuery: (query: string) => void;
 }
 
 export const useSettingsStore = create<SettingsStore>()(
@@ -23,11 +27,16 @@ export const useSettingsStore = create<SettingsStore>()(
             voiceGuide: true,
             language: 'malay',
 
+            isAiNavigating: false,
+            lastAiSearchQuery: '',
+
             setDarkMode: (darkMode) => set({ darkMode }),
             setTextSize: (textSize) => set({ textSize }),
             setNotifications: (notifications) => set({ notifications }),
             setVoiceGuide: (voiceGuide) => set({ voiceGuide }),
             setLanguage: (language) => set({ language }),
+            setIsAiNavigating: (isAiNavigating) => set({ isAiNavigating }),
+            setLastAiSearchQuery: (lastAiSearchQuery) => set({ lastAiSearchQuery }),
         }),
         {
             name: 'suarashop-settings',

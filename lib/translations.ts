@@ -87,6 +87,10 @@ export const translations = {
             checkout_help: "❓ Bantuan checkout",
             type_message: "Taip mesej anda...",
             understanding: "Saya fahami. Biar saya bantu anda dengan itu.",
+            listening: "Sedang mendengar...",
+            processing: "Sedang memproses...",
+            not_found: "Maaf, saya tidak menemui produk yang anda cari.",
+            guided_prompt: "Ini adalah produk yang anda mahukan. Sila baca maklumat produk dan tekan butang 'Tambah ke Troli' untuk meneruskan.",
         },
         cart: {
             title: "Troli Beli-Belah",
@@ -346,6 +350,10 @@ export const translations = {
             checkout_help: "❓ Checkout help",
             type_message: "Type your message...",
             understanding: "I understand. Let me help you with that.",
+            listening: "Listening...",
+            processing: "Processing...",
+            not_found: "Sorry, I couldn't find the product you're looking for.",
+            guided_prompt: "This is the product you wanted. Please read the details and click 'Add to Cart' to proceed.",
         },
         cart: {
             title: "Shopping Cart",

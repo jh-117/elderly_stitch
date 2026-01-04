@@ -162,7 +162,7 @@ export default function CheckoutPage() {
             </main>
 
             {/* Place Order Button */}
-            <div className="fixed bottom-16 left-4 right-4 bg-white/90 dark:bg-[#1a2632]/90 backdrop-blur-md border border-white dark:border-gray-800 p-6 shadow-[0_-15px_30px_rgba(0,0,0,0.1)] rounded-[32px] max-w-lg mx-auto z-10 transition-all">
+            <div className="fixed bottom-16 left-4 right-4 bg-white/90 dark:bg-[#1a2632]/90 backdrop-blur-md border border-white dark:border-gray-800 p-6 shadow-[0_-15px_30px_rgba(0,0,0,0.1)] rounded-[32px] max-w-md mx-auto z-10 transition-all">
                 <button
                     onClick={handlePlaceOrder}
                     disabled={isProcessing}

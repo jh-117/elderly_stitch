@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 import ThemeProvider from "@/components/providers/ThemeProvider";
+import FloatingAIButton from "@/components/ui/FloatingAIButton";
 
 export default function RootLayout({
     children,
@@ -39,8 +40,9 @@ export default function RootLayout({
                 className={`${lexend.variable} ${manrope.variable} font-display bg-background-light dark:bg-background-dark text-charcoal dark:text-white antialiased`}
             >
                 <ThemeProvider>
-                    <div className="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl">
+                    <div className="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl overflow-x-hidden">
                         {children}
+                        <FloatingAIButton />
                     </div>
                 </ThemeProvider>
             </body>
